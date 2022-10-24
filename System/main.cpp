@@ -128,7 +128,6 @@ int main() {
 
     America->buildArmy();
 
-    
 
     return 0;
 

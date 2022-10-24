@@ -24,7 +24,7 @@ double randomNumber(double prob)
 }
 
 int main() {
-    //Hi its jackie//
+    
     int ourMoney = 5000;
     string choice;
     int attCounter = 2;

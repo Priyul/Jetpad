@@ -43,8 +43,8 @@ int main() {
     DefendArr[0] = new Soldier("Major");
     DefendArr[1] = new Soldier("Major");
     DefendArr[2] = new Soldier("Major");
-// edwin testing
-
+    
+    
     while (attCounter >= 0 && defCounter >= 0) {
         string attRank = AttackArr[attCounter]->getRank();
         string defRank = DefendArr[defCounter]->getRank();

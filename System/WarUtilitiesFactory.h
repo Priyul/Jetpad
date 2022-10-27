@@ -2,29 +2,29 @@
 #define WARUTILITIESFACTORY_H
 
 #include <iostream>
+#include "Soldier.h"
 using namespace std;
 
 class WarUtilitiesFactory
 {
     public:
-        void virtual createVehicle();
+        virtual void createVehicle()=0;
         //void virtual createWeapon();
-        void virtual createSoldier();
+        virtual Soldier* createSoldier()=0;
         ~WarUtilitiesFactory();
 };
 
 class SoldierFactory: public WarUtilitiesFactory
 {
     public:
-        //Soldier* 
-        void createSoldier();
+        Soldier* createSoldier();
 };
 
 class VehicleFactory: public WarUtilitiesFactory
 {
     public:
-       // Vehicle*// 
-       void createVehicle();
+        //Vehicle* 
+        void createVehicle();
 };
 
 

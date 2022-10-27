@@ -3,12 +3,16 @@
 
 using namespace std;
 
-void SoldierFactory::createSoldier()
+Soldier* SoldierFactory::createSoldier()
 {
-    //return new Soldier();
+    string rank;
+    cout<<"What rank is your soldier?"<<endl;
+    cin>>rank;
+    return new Soldier(rank);
 }
 
-void VehicleFactory::createVehicle()
+//Vehicle*
+ void VehicleFactory::createVehicle()
 {
     //return new Vehicle();
 }

@@ -8,6 +8,7 @@ class AirAttack: public Attacking
     public:
         void airAttack();
         AirAttack handle();
+        ~AirAttack();
 };
 
 #endif

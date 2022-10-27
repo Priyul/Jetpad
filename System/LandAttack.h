@@ -8,6 +8,7 @@ class LandAttack: public Attacking
     public:
         void landAttack();
         LandAttack handle();
+        ~LandAttack();
 };
 
 #endif

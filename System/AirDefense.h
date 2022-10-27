@@ -8,6 +8,7 @@ class AirDefense: public Defending
     public:
         void airDefense();
         AirDefense handle();
+        ~AirDefense();
 };
 
 #endif

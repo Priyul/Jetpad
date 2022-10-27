@@ -8,6 +8,7 @@ class LandDefense: public Defending
     public:
         void landDefense();
         LandDefense handle();
+        ~landDefense();
 };
 
 #endif

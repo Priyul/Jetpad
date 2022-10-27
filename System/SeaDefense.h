@@ -8,6 +8,7 @@ class SeaDefense: public Defending
     public:
         void seaDefense();
         SeaDefense handle();
+        ~SeaDefense();
 };
 
 #endif

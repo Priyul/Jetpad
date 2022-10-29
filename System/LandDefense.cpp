@@ -7,5 +7,10 @@ void LandDefense::landDefense()
 
 LandDefense LandDefense::handle()
 {
-    
+
+}
+
+LandDefense::~LandDefense()
+{
+
 }

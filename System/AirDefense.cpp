@@ -9,3 +9,8 @@ AirDefense AirDefense::handle()
 {
     
 }
+
+AirDefense::~AirDefense()
+{
+    
+}

@@ -7,5 +7,10 @@ void SeaDefense::seaDefense()
 
 SeaDefense SeaDefense::handle()
 {
-    
+
+}
+
+SeaDefense::~SeaDefense()
+{
+
 }

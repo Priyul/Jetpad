@@ -9,7 +9,6 @@ class WarUtilitiesFactory
 {
     public:
         virtual void createVehicle()=0;
-        //void virtual createWeapon();
         virtual Soldier* createSoldier()=0;
         ~WarUtilitiesFactory();
 };

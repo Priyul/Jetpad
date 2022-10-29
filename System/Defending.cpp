@@ -1,59 +1,16 @@
 #include "Defending.h"
 
-using namespace std;
-
-Defending::~Defending() //Defending Destructor
+void Defending::LandDefense()
 {
 
 }
 
-//Land Defense Functions
-LandDefense::LandDefense()
-{
-
-}
-
-LandDefense LandDefense::handle()
-{
-    LandDefense landDefense;
-    return landDefense;
-}
-
-LandDefense::~LandDefense()
-{
-
-}
-
-//Air Defense Funcitons
-void AirDefense::airDefense()
-{
-
-}
-
-AirDefense AirDefense::handle()
-{
-    AirDefense airDefense;
-    return airDefense;
-}
-
-AirDefense::~AirDefense()
+void Defending::AirDefense()
 {
     
 }
 
-//Sea Defense Functions
-SeaDefense::SeaDefense()
+void Defending::SeaDefense()
 {
-
-}
-
-SeaDefense SeaDefense::handle()
-{
-    SeaDefense seaDefense;
-    return seaDefense;
-}
-
-SeaDefense::~SeaDefense()
-{
-
+    
 }

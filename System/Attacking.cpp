@@ -15,7 +15,8 @@ void LandAttack::landAttack()
 
 LandAttack LandAttack::handle()
 {
-
+    LandAttack landAttack;
+    return landAttack;
 }
 
 LandAttack::~LandAttack()
@@ -31,7 +32,9 @@ void AirAttack::airAttack()
 
 AirAttack AirAttack::handle()
 {
-    
+    AirAttack airAttack;
+    return airAttack;
+ 
 }
 
 AirAttack::~AirAttack()
@@ -47,6 +50,8 @@ void SeaAttack::seaAttack()
 
 SeaAttack SeaAttack::handle()
 {
+    SeaAttack seaAttack;
+    return seaAttack;
 
 }
 

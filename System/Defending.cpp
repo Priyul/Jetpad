@@ -8,14 +8,15 @@ Defending::~Defending() //Defending Destructor
 }
 
 //Land Defense Functions
-void LandDefense::landDefense()
+LandDefense::LandDefense()
 {
 
 }
 
 LandDefense LandDefense::handle()
 {
-
+    LandDefense landDefense;
+    return landDefense;
 }
 
 LandDefense::~LandDefense()
@@ -31,7 +32,8 @@ void AirDefense::airDefense()
 
 AirDefense AirDefense::handle()
 {
-    
+    AirDefense airDefense;
+    return airDefense;
 }
 
 AirDefense::~AirDefense()
@@ -40,14 +42,15 @@ AirDefense::~AirDefense()
 }
 
 //Sea Defense Functions
-void SeaDefense::seaDefense()
+SeaDefense::SeaDefense()
 {
 
 }
 
 SeaDefense SeaDefense::handle()
 {
-
+    SeaDefense seaDefense;
+    return seaDefense;
 }
 
 SeaDefense::~SeaDefense()

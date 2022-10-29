@@ -13,14 +13,15 @@ class Defending: public WarStrategy
         virtual void LandDefense();
         virtual void AirDefense();
         virtual void SeaDefense();
+        ~Defending();
 };
 
 class LandDefense: public Defending
 {
     public:
-        void landDefense();
+        LandDefense();
         LandDefense handle();
-        ~landDefense();
+        ~LandDefense();
 };
 
 class AirDefense: public Defending
@@ -34,7 +35,7 @@ class AirDefense: public Defending
 class SeaDefense: public Defending
 {
     public:
-        void seaDefense();
+        SeaDefense();
         SeaDefense handle();
         ~SeaDefense();
 };

@@ -1,56 +1,16 @@
 #include "Attacking.h"
 
-using namespace std;
-
-Attacking::~Attacking() //Attacking Destructor
+void Attacking::LandAttack()
 {
 
 }
 
-//Land Attack Functions
-void LandAttack::landAttack()
-{
-
-}
-
-LandAttack LandAttack::handle()
-{
-
-}
-
-LandAttack::~LandAttack()
-{
-
-}
-
-//Air Attack Funcitons
-void AirAttack::airAttack()
-{
-
-}
-
-AirAttack AirAttack::handle()
+void Attacking::AirAttack()
 {
     
 }
 
-AirAttack::~AirAttack()
+void Attacking::SeaAttack()
 {
     
-}
-
-//Sea Attack Functions
-void SeaAttack::seaAttack()
-{
-
-}
-
-SeaAttack SeaAttack::handle()
-{
-
-}
-
-SeaAttack::~SeaAttack()
-{
-
 }

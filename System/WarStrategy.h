@@ -8,11 +8,16 @@ class WarStrategy
 {
     public:
     // Getters
-    WarStrategy();
-    ~WarStrategy();
         string getBattleState();
     // Virtual Functions
         // Types of Attacks
+        virtual void landAttack();
+        virtual void airAttack();
+        virtual void seaAttack();
+        // Types of Defense
+        virtual void landDefense();
+        virtual void airDefense();
+        virtual void seaDefense();
     protected:
         string BattleState;
 };

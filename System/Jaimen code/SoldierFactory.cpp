@@ -10,4 +10,5 @@ Army* SoldierFactory :: createSoldier(string type, double probability, string ra
     return obj;
 }
 
-//1213
+//SlAPPER
+//dONT ADD THAT TO THE GITHUB

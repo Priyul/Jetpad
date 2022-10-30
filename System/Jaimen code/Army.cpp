@@ -18,5 +18,5 @@ double Army :: getProbability() {
     return this->probability;
 }
 
-
-//1213
+//SLAPPER
+//dONT ADD THAT TO THE GITHUB

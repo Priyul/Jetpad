@@ -2,5 +2,13 @@
 
 string WarStrategy::getBattleState()
 {
-    return BattleState;
+    return "";
+}
+
+WarStrategy::WarStrategy()
+{
+}
+
+WarStrategy::~WarStrategy()
+{
 }

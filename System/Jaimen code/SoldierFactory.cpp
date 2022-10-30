@@ -9,3 +9,5 @@ Army* SoldierFactory :: createSoldier(string type, double probability, string ra
     Army* obj = new Soldier(type, probability, rank);
     return obj;
 }
+
+//1213

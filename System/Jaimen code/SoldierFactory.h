@@ -10,3 +10,4 @@ class SoldierFactory : public ArmyFactory {
 };
 
 #endif
+//1213

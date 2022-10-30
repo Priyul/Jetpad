@@ -3,7 +3,7 @@
 
 Vehicle :: Vehicle(string type, double probability) {
     this->type = type;
-    this->probability = probabiity;
+    this->probability = probability;
 }
 
 Vehicle :: ~Vehicle() {
@@ -21,3 +21,4 @@ string Vehicle :: getType() {
 double Vehicle :: getProbability() {
     return this->probability;
 }
+//1213

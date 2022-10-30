@@ -21,3 +21,5 @@ Soldier :: ~Soldier() {
 string Soldier :: getRank() {
     return this->rank;
 }
+
+//1213

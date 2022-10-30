@@ -9,3 +9,5 @@ Army* VehicleFactory :: createVehicle(string type, double probability) {
     Army* obj = new Vehicle(type, probability);
     return obj;
 }
+
+//1213

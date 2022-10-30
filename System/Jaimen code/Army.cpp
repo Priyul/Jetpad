@@ -17,3 +17,6 @@ string Army :: getType() {
 double Army :: getProbability() {
     return this->probability;
 }
+
+
+//1213

@@ -4,22 +4,23 @@
 #include <iostream>
 #include "Army.h"
 
+using namespace std;
+
 class Vehicle : public Army {
 public:
+    Vehicle();
     Vehicle(string type, double probability);
     ~Vehicle();
 
-private:
-    string type;
-    double probability;
-
+    string getRank();
     string getType();
+
     double getProbability();
     void setProbability(double p);
+private:
+    string type;
+ 
 };
 
 
 #endif
-
-//SlAPPER
-//dONT ADD THAT TO THE GITHUB

@@ -2,25 +2,26 @@
 #include "Vehicle.h"
 
 Vehicle :: Vehicle(string type, double probability) {
-    this->type = type;
     this->probability = probability;
+    this->type = type;
 }
 
 Vehicle :: ~Vehicle() {
 
 }
 
-void Vehicle::setProbability(double p) {
-    this->probability = p;
+string Vehicle :: getRank() {
+    return this->type;
 }
 
-string Vehicle :: getType() {
-    return this->type;
+string Vehicle :: getType(){
+    return "vehicle";
 }
 
 double Vehicle :: getProbability() {
     return this->probability;
 }
 
-//SlAPPER
-//dONT ADD THAT TO THE GITHUB
+void Vehicle::setProbability(double p) {
+    this->probability = p;
+}

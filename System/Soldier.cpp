@@ -1,10 +1,9 @@
 #include <iostream>
 #include "Soldier.h"
 
-Soldier :: Soldier(string rank) {
-    this->rank = rank;
-
-
+Soldier :: Soldier(string type, double probability) {
+    this->rank = type;
+    this->probability = probability;
 }
 
 Soldier :: ~Soldier() {
@@ -21,4 +20,8 @@ string Soldier :: getRank() {
 
 double Soldier :: getProbability() {
     return this->probability;
+}
+
+string Soldier :: getType(){
+    return "soldier";
 }

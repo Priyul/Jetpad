@@ -1,11 +1,11 @@
 a: *.cpp
-		g++ *.cpp -o main
+	g++ *.cpp -o main
 
 run:
-		./main
+	./main
 
 clean: 
-		rm *.o main
+	rm *.o main
 
 tar:
-		tar -cvz *.cpp makefile -f JETPAD.tar
+	tar -cvz *.cpp makefile -f JETPAD.tar

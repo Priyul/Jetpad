@@ -19,34 +19,43 @@ double randomNumber(double prob)
 
 void LandAttack::handle(vector<Army*> ourArmy, vector<Army*> AIArmy){
 
-     int numberOfAttackers = 0;
-     int numberOfDefenders = 0;
+    int numberOfAttackers = 0;
+    int numberOfDefenders = 0;
 
-     for(int i=0; i<ourArmy.size(); i++){
-          if(ourArmy[i]->getType() == "soldier"){
-               numberOfAttackers++;
-          }
-     }
+    int numberOfAttackingVehicles = 0;
+    int numberOfDefendingVehicles = 0;
 
-     for(int i=0; i<AIArmy.size(); i++){
-          if(AIArmy[i]->getType() == "soldier"){
-               numberOfDefenders++;
-          }
-     }
+    for (int i = 0; i < ourArmy.size(); i++) {
+        if(ourArmy[i]->getType() == "soldier") {
+        numberOfAttackers++;
+        } else {
+            numberOfAttackingVehicles++;
+        }
+    }
 
-     int attCounter = 0;
-     int defendCounter = 0;
+    for(int i=0; i<AIArmy.size(); i++){
+        if(AIArmy[i]->getType() == "soldier"){
+        numberOfDefenders++;
+        }else{
+        numberOfDefendingVehicles++;
+        }
+    }
 
-     while (numberOfAttackers >= 0 && numberOfDefenders >= 0) {
+    int attCounter = 0;
+    int defendCounter = 0;
 
 
-          while(ourArmy[attCounter]->getType() != "soldier"){
-               attCounter++;
-          }
+    //for the soldiers fighting
+    while (numberOfAttackers >= 0 && numberOfDefenders >= 0) {
 
-          while(AIArmy[defendCounter]->getType() != "soldier"){
-               defendCounter++;
-          }
+
+        while(ourArmy[attCounter]->getType() != "soldier"){
+           attCounter++;
+        }
+
+        while(AIArmy[defendCounter]->getType() != "soldier"){
+            defendCounter++;
+        }
 
 
         string attRank = ourArmy[attCounter]->getRank();
@@ -115,6 +124,14 @@ void LandAttack::handle(vector<Army*> ourArmy, vector<Army*> AIArmy){
                     break;
             }
         }
-     }
+    }
 
+
+    //for the vehicles fighting
+    int attVehicleCounter = 0;
+    int defendVehicleCounter = 0;
+
+    while(numberOfAttackingVehicles >= 0 && numberOfDefendingVehicles >= 0){
+        
+    }
 }    

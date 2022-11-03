@@ -5,9 +5,12 @@
 #include<string>
 using namespace std;
 
+#include "Country.h"
+
 class BuildPhase:public State{
     public:
         virtual void handleAction(Context* c);
         virtual string getState();
+
 };
 #endif

@@ -11,7 +11,6 @@ protected:
 public:
     virtual string getRank() = 0; //return rank of soldier || type of plane
     virtual string getType() = 0;
-    virtual double getProbability() = 0;
     virtual void setProbability(double p) = 0;
 };
 

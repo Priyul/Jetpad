@@ -1,12 +1,12 @@
-#ifndef LANDATTACK_H
-#define LANDATTACK_H
+#ifndef ATTACKING_H
+#define ATTACKING_H
 
 #include "WarStrategy.h"
 
-class LandAttack : public WarStrategy{
+class Attacking : public WarStrategy{
 public:
-    LandAttack();
-    void handle(vector<Army*> ourArmy, vector<Army*> AIArmy);
+    Attacking();
+    void handle(vector<Army*> ourArmy, vector<Army*> AIArmy, string CPUDefenseStrategy);
 };
 
 #endif

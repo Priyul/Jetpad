@@ -18,7 +18,8 @@ using namespace std;
 
 class Country {
 public:
-    Country(string name, double money); 
+    Country();
+    //Country(string name, double money); we dont need this anymore because the builder sorts everything out
     ~Country();
 
     string getCountryName();

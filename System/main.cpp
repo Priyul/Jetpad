@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "Country.h"
 #include "Soldier.h"
@@ -29,12 +30,18 @@ int main() {
         int firstInput = playerTurn();
         bool firstPass = false;
 
+        vector<Army*> returningArmy;
+
         while (!firstPass) {
             switch (firstInput) {
                 case 1:
                     cout << "Attack selected" << endl;
+                    returningArmy = america->attack();
+                    // if(!returningArmy.empty()){ //failed to attack due to insuffecient number of tr
+                    //     firstPass = true;
+                    // }
                     firstPass = true;
-                    doCheck = true;
+                    // doCheck = true; //idk if this is supposed to be here anymore, check again
                     break;
                 case 2:
                     cout << "Build selected" << endl;

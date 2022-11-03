@@ -9,8 +9,8 @@ Context::Context(){
 }
 
 Context::~Context(){
-    delete this->state;
-    state = 0;
+    //delete this->state;
+    //state = 0;
 }
 
 void Context::change(){

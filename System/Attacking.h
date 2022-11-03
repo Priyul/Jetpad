@@ -3,10 +3,14 @@
 
 #include "WarStrategy.h"
 
+#include <cstdlib>
+#include <random>
+#include <ctime>
+
 class Attacking : public WarStrategy{
 public:
     Attacking();
-    void handle(vector<Army*> ourArmy, vector<Army*> AIArmy, string CPUDefenseStrategy);
+    void handle(vector<Army*> ourArmy, vector<Army*> AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy);
 };
 
 #endif

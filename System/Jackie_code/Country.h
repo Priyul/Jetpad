@@ -28,6 +28,7 @@ public:
     void buildArmy();
     void showArmy();
     vector<Army*> attack();
+    vector<Army*> army;
 
     void countNumberOfIndividualTroops(vector<Army*> ourArmy);
     // void soldierInput(int input);
@@ -42,7 +43,7 @@ protected:
 private:
     double money;
     string countryName;
-    vector<Army*> army;
+    //vector<Army*> army;
 
     int numberOfMajors;
     int numberOfSergeants;

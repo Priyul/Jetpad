@@ -32,7 +32,7 @@ int main() {
 
         vector<Army*> returningArmy;
 
-        while (!firstPass) {
+        while (!firstPass) { //priyul
             switch (firstInput) {
                 case 1:
                     cout << "Attack selected" << endl;

@@ -5,6 +5,7 @@
 
 #include "Builder.h"
 #include "Country.h" 
+#include "Army.h"
 
 using namespace std;
 
@@ -21,6 +22,13 @@ public:
     void buildName(string name);
     void buildArmy();
     void buildMoney(double money);
+
+    int chooseArmyType();
+    int chooseSoldierRank();
+    int chooseVehicleType();
+    int buyMoreSoldiers(int secondInput, string type);
+    int chooseArmySize(string type);
+    /* army creation*/
 
     Country* getCountry();
 };

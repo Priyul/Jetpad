@@ -25,11 +25,19 @@ class State;
 using namespace std;
 
 int main() {
-    Context* context = new Context();
+    Context* currentState = new Context();
+    /* currentState is currently start of war */
     cout<<"Start of the War:"<<endl;
-    context->change();
 
 
+
+
+
+    currentState->change(); //currentState is now at buildPhase
+
+
+
+    cout << "Hello" << endl;
 
     return 0;
 }

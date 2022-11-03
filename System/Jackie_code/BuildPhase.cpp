@@ -10,17 +10,18 @@ void BuildPhase::handleAction(Context* c)
     string ans;
     cout<<"-----------------------------------------------"<<endl;
     cout<<c->getState()<<endl;
-    cout<<"State: Building Phase"<<endl;
-    cout<<endl;
-    cout<<"Building troops here"<<endl;
-    cout<<endl;
-    cout<<"For Testing:"<<endl;
-    cout<<"Back to Action after building troops"<<endl;
-    cout<<"Do you finish building your Troops?(y/n)";
+    cout<<"State: Building Phase"<<endl << endl;
+    
+    bool finished = false;
+    
+    
+    cout<<"Did you finish building your Troops?(y/n)";
     cin>>ans;
     if(ans == "y")
     {
         c->setState(new Action());
+    } else {
+
     }
     
 }

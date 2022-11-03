@@ -14,6 +14,7 @@
 
 /* BUILDER INTEGRATON */
 #include "Director.h"
+
 /* END OF BUILDER INTEGRATON */
 
 
@@ -36,7 +37,19 @@ void StartOfWar::handleAction(Context* c){
     vector<string> countriesArray;
     for (int i = 0; i < 12; i++) {
         countriesArray.push_back(countryNames[i]);
+        
     }
+
+    vector<double> moneyArray;
+    for (int i = 0; i < 12; i++) {
+        moneyArray.push_back(countryMoney[i]);
+    }
+
+    // //print money vector
+    // cout << "Money vector: " << endl;
+    // for (int i = 0; i < moneyArray.size(); i++) {
+    //     cout << moneyArray[i] << endl;
+    // }
 
     cout << "\033[1;31m" <<"The countries you can select from are listed below: " << "\033[0m" << endl;
     
@@ -50,25 +63,91 @@ void StartOfWar::handleAction(Context* c){
     //selected country goes to createCountry function
     buildCountry(countryNames[num], countryMoney[num]);
     
-    //remove selected country from vector
+    //remove selected country from country vector
     auto it = find(countriesArray.begin(), countriesArray.end(), countriesArray[num]);
     if(it != countriesArray.end()){
         countriesArray.erase(it);
     }
 
-    for(auto it = countriesArray.begin(); it != countriesArray.end(); ++it){
-        cout << " " << *it;
+    //remove selected country's money from money vector
+    auto it3 = find(moneyArray.begin(), moneyArray.end(), moneyArray[num]);
+    if(it3 != moneyArray.end()){
+        moneyArray.erase(it3);
     }
+
+    string var1 = "";
+    cout << "Array after user picks country: " << endl;
+    for(auto it = countriesArray.begin(); it != countriesArray.end(); ++it){
+        if(it == countriesArray.end()-1){
+            var1 += *it;
+        }else{
+            var1 += *it + ", ";
+        }
+    }
+
+    cout << "[" << var1 << "]"<<endl;
 
     int randNumber;
     //AI Selects random country from countriesArray
     // Initialize random number generator.
     randNumber = (rand() % countriesArray.size()) + 0;
 
+    cout << endl;
+    cout << endl << "\033[1;31m" << "Player 2 has selcted: " << countryNames[randNumber] << "\033[0m" << endl;
+
+    auto it2 = find(countriesArray.begin(), countriesArray.end(), countriesArray[randNumber]);
+    if(it2 != countriesArray.end()){
+        countriesArray.erase(it2);
+    }
+
+    auto it4 = find(moneyArray.begin(), moneyArray.end(), moneyArray[randNumber]);
+    if(it4 != moneyArray.end()){
+        moneyArray.erase(it4);
+    }
 
 
 
-    c->setState(new Action());
+    // cout << "Array after AI selects a country: " << endl;
+    // for(auto it2 = countriesArray.begin(); it2 != countriesArray.end(); ++it2){
+    //     cout << "[" << *it2 << "]";
+    // }
+    
+    buildCountry(countryNames[randNumber], countryMoney[randNumber]);
+
+    string var2 = "";
+    cout << "Array after user picks country: " << endl;
+    for(auto it = countriesArray.begin(); it != countriesArray.end(); ++it){
+        if(it == countriesArray.end()-1){
+            var2 += *it;
+        }else{
+            var2 += *it + ", ";
+        }
+    }
+
+    cout << "[" << var2 << "]"<<endl;
+
+
+    //User chooses alliances
+    cout << endl;
+    vector<string> AlliesArray;
+
+    int AllyInput;
+
+    cout << "\033[1;31m" <<"Select your alliances from the listed countries below: " << "\033[0m" << endl;
+    
+    for (int i = 0; i < countriesArray.size(); i++){
+        cout << i << " ==> " << countriesArray[i] << endl << <<"R: " << moneyArray[i] << endl <<
+            " Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
+            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << endl;
+        
+    }
+
+    cout << "\033[1;31m" << "Select your ally:" << "\033[0m" << endl;
+    cin >> AllyInput;
+    AlliesArray.push_back(countriesArray[AllyInput]);
+
+
+    //c->setState(new Action());
 
 }
 
@@ -84,6 +163,8 @@ Country* StartOfWar :: buildCountry(string countryName, double money) {
     
     countryDirector->countryBuilder->buildName(countryName);
     countryDirector->countryBuilder->buildMoney(money);
+    //cout << "going into buildarmy function" << endl << endl << endl;
+    countryDirector->countryBuilder->buildArmy();
 
     Country* ourCountry = countryDirector->countryBuilder->getCountry();
 

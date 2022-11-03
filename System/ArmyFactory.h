@@ -9,14 +9,10 @@ class ArmyFactory  {
         ArmyFactory();
         ~ArmyFactory();
 
-        virtual Soldier* createSoldier() = 0;
-        virtual Vehicle* createVehicle() = 0;
+        virtual Army* create(string type, double probability) = 0;
 
-    private:
+    protected:
         int strategy; //howzit
         int totalTroops;
 };
 #endif
-
-//SlAPPER
-//dONT ADD THAT TO THE GITHUB

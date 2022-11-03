@@ -3,12 +3,13 @@
 
 #include "WarStrategy.h"
 
-class Attacking: public WarStrategy
-{
-    public:
-        // Types of Attacks
-         virtual void LandAttack();
-         virtual void AirAttack();
-         virtual void SeaAttack();
+class Attacking : public WarStrategy{
+public:
+    virtual void landAttackHandle() = 0;
+private:
+    virtual void landDefenseHandle(){};
 };
+
 #endif
+
+//priyul 

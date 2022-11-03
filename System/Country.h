@@ -4,7 +4,15 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 #include "Army.h"
+#include "SoldierFactory.h"
+#include "VehicleFactory.h"
+//#include "ArmyFactory.h"
+
+#include "Soldier.h"
+#include "Vehicle.h"
 
 using namespace std;
 
@@ -15,10 +23,10 @@ public:
 
     string getCountryName();
     double getMoney();
-    vector<Army> army;
 
     void buildArmy();
-    void soldierInput(int input);
+    void showArmy();
+    // void soldierInput(int input);
     
 protected:
 
@@ -27,6 +35,7 @@ protected:
 private:
     double money;
     string countryName;
+    vector<Army*> army;
 };
 
 #endif

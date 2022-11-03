@@ -4,12 +4,10 @@
 #include "ArmyFactory.h"
 
 class SoldierFactory : public ArmyFactory {
+public:
     SoldierFactory();
-    ~SoldierFactory();
-    Army* createSoldier(string type, double probability, string rank);
+    //~SoldierFactory();
+    Army* create(string rank, double probability);
 };
 
 #endif
-
-//SlAPPER
-//dONT ADD THAT TO THE GITHUB

@@ -8,16 +8,17 @@ using namespace std;
 
 class Soldier : public Army {
 public:
-    Soldier(string rank);
+    Soldier();
+    Soldier(string type, double probability);
     ~Soldier();
 
     string getRank();
     double getProbability();
     void setProbability(double p);
+    string getType();
 
 private:
     string rank;
-    double probability;
 
 };
 

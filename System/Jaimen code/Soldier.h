@@ -9,7 +9,7 @@ using namespace std;
 class Soldier : public Army {
 public:
     Soldier();
-    Soldier(string type, double probability, string rank);
+    Soldier(string rank, double probability);
     ~Soldier();
 
     string getRank();

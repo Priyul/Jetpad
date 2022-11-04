@@ -1,8 +1,8 @@
 #ifndef ARMY_H
 #define ARMY_H
 #include "ArmyPrototype.h"
+#include <string>
 #include <iostream>
-
 using namespace std;
 
 class Army : public ArmyPrototype {

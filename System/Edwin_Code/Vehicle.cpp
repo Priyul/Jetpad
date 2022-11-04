@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include "Vehicle.h"
+using namespace std;
 
 Vehicle :: Vehicle(string type, double probability) {
     this->probability = probability;

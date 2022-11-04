@@ -147,143 +147,42 @@ void StartOfWar::handleAction(Context* c){
     cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
     cin >> AllyInput1;
     AlliesArrayP1.push_back(countriesArray[AllyInput1]);
-    
-    //remove country from countries array
-    auto it5 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it5 != countriesArray.end()){
-        countriesArray.erase(it5);
-    }
 
     cout << "\033[1;31m" << "P2 select your allies:" << "\033[0m" << endl;
-
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput2;
     AlliesArrayP2.push_back(countriesArray[AllyInput2]);
 
-    auto it53 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it53 != countriesArray.end()){
-        countriesArray.erase(it53);
-    }
-
-    
-
     cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput1;
     AlliesArrayP1.push_back(countriesArray[AllyInput1]);
 
-    auto it55 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it55 != countriesArray.end()){
-        countriesArray.erase(it55);
-    }
-
     cout << "\033[1;31m" << "P2 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput2;
     AlliesArrayP2.push_back(countriesArray[AllyInput2]);
-    auto it6 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it6 != countriesArray.end()){
-        countriesArray.erase(it6);
-    }
 
     cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput1;
     AlliesArrayP1.push_back(countriesArray[AllyInput1]);
-    auto it7 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it7!= countriesArray.end()){
-        countriesArray.erase(it7);
-    }
 
     cout << "\033[1;31m" << "P2 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput2;
     AlliesArrayP2.push_back(countriesArray[AllyInput2]);
-    auto it8 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it8 != countriesArray.end()){
-        countriesArray.erase(it8);
-    }
 
     cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput1;
     AlliesArrayP1.push_back(countriesArray[AllyInput1]);
-    auto it9 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it9 != countriesArray.end()){
-        countriesArray.erase(it9);
-    }
 
     cout << "\033[1;31m" << "P2 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput2;
     AlliesArrayP2.push_back(countriesArray[AllyInput2]);
-    auto it10 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it10 != countriesArray.end()){
-        countriesArray.erase(it10);
-    }
 
     cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput1;
     AlliesArrayP1.push_back(countriesArray[AllyInput1]);
-    auto it11 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it11 != countriesArray.end()){
-        countriesArray.erase(it11);
-    }
 
     cout << "\033[1;31m" << "P2 select your allies:" << "\033[0m" << endl;
-    for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << "\033[1;33m" <<countriesArray[i] << "\033[0m" <<endl << "\033[1;32m" << "R " << moneyArray[i] << endl <<
-            "Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
-            "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << "\033[0m" << endl;
-        
-    }
     cin >> AllyInput2;
     AlliesArrayP2.push_back(countriesArray[AllyInput2]);
-    auto it12 = find(countriesArray.begin(), countriesArray.end(), countriesArray[AllyInput1]);
-    if(it12 != countriesArray.end()){
-        countriesArray.erase(it12);
-    }
 
     for(int i = 0; i < AlliesArrayP1.size();i++){
         cout <<  AlliesArrayP1[i] << ", ";

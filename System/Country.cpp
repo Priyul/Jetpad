@@ -435,6 +435,8 @@ vector<Army*> Country::attack(){
         }
     }
 
+    cout << "went here" << endl;
+    
     if(vehicleChosenForAttack == "Tank"){
         if(ChooseNumberOfVehiclesToSend > this->numberOfTanks){
             cout << "\033[7;31m" << "You do not have enough tanks to make this kind of attack. Select a new attack strategy or build more tanks " << "\033[7;32m" << "Available: "  << this->numberOfTanks << "\033[0m" << endl;
@@ -508,6 +510,7 @@ vector<Army*> Country::attack(){
         aiArmy.push_back(new Vehicle("Tank", 0));
     }
 
+    cout << "went here" << endl;
     WarStrategy* attackStrategy = new Attacking();
     attackStrategy->handle(this->army, aiArmy, PlayerAttackType, CPUDefenseType);
 

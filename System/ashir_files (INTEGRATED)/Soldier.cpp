@@ -1,21 +1,27 @@
-//
-// Created by Ashir on 2022/10/29.
-//
-
+#include <iostream>
 #include "Soldier.h"
 
-Soldier::Soldier(std::string rank) {
-    this->rank = rank;
+Soldier :: Soldier(string type, double probability) {
+    this->rank = type;
+    this->probability = probability;
 }
 
-std::string Soldier::getRank() {
+Soldier :: ~Soldier() {
+
+}
+
+void Soldier::setProbability(double p) {
+    this->probability = p;
+}
+
+string Soldier :: getRank() {
     return this->rank;
 }
 
-double Soldier::getProbability() {
+double Soldier :: getProbability() {
     return this->probability;
 }
 
-void Soldier::setProbability(double prob) {
-    this->probability = prob;
+string Soldier :: getType(){
+    return "soldier";
 }

@@ -1,27 +1,62 @@
-//
-// Created by Ashir on 2022/10/29.
-//
-
-#ifndef ASHIR_CODE_FILES_COUNTRY_H
-#define ASHIR_CODE_FILES_COUNTRY_H
+#ifndef COUNTRY_H
+#define COUNTRY_H
 
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
+#include "Army.h"
+#include "SoldierFactory.h"
+#include "VehicleFactory.h"
+//#include "ArmyFactory.h"
+
 #include "Soldier.h"
+#include "Vehicle.h"
 
-class Country{
+using namespace std;
+
+class Country {
 public:
-    Country(std::string name, double money);
+    Country();
+    //Country(string name, double money); we dont need this anymore because the builder sorts everything out
+    ~Country();
 
-    std::string getCountryName();
+    string getCountryName();
     double getMoney();
+
+    vector<Army*> army; //move to private eventually
     void buildArmy();
     void showArmy();
+    vector<Army*> attack();
+    vector<Army*> getArmy();
+
+    void countNumberOfIndividualTroops(vector<Army*> ourArmy);
+    // void soldierInput(int input);
+
+    void setName(string name);
+    void setMoney(double money);
+
+    void setSoldierFactory(ArmyFactory* soldierFactory);
+    void setVehicleFactory(ArmyFactory* vehicleFactory);
+protected:
+
+
+
 private:
-    std::string name;
-    std::vector<Soldier*> army;
     double money;
+    string countryName;
+
+    ArmyFactory* soldierFactory;
+    ArmyFactory* vehicleFactory;
+
+    int numberOfMajors;
+    int numberOfSergeants;
+    int numberOfPrivates;
+
+    int numberOfTanks;
+    int numberOfPlanes;
+    int numberOfShips;
 };
 
-#endif //ASHIR_CODE_FILES_COUNTRY_H
+#endif

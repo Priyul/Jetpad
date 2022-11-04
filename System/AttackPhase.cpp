@@ -14,8 +14,8 @@ void AttackPhase::handleAction(Context* c)
     cout<<c->getState()<<endl;
     cout<<"State: Attack Phase"<<endl;
     cout<<endl;
-    cout<<"Doing some attack here"<<endl;
-    cout<<endl;
+    //cout<< "Country "<< this->myCountry->getName() << "is declaring war on "<< << endl;
+    cout<<endl; 
     cout<<"For Testing"<<endl;
     cout<<"1. Attack next country"<<endl;
     cout<<"2. Defend"<<endl;

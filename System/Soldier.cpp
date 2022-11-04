@@ -25,3 +25,8 @@ double Soldier :: getProbability() {
 string Soldier :: getType(){
     return "soldier";
 }
+
+
+Army* Soldier :: clone() {
+    return this;
+}

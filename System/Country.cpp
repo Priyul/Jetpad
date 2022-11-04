@@ -435,6 +435,8 @@ vector<Army*> Country::attack(){
         }
     }
 
+    cout << "went here" << endl;
+    
     if(vehicleChosenForAttack == "Tank"){
         if(ChooseNumberOfVehiclesToSend > this->numberOfTanks){
             cout << "\033[7;31m" << "You do not have enough tanks to make this kind of attack. Select a new attack strategy or build more tanks " << "\033[7;32m" << "Available: "  << this->numberOfTanks << "\033[0m" << endl;
@@ -508,6 +510,7 @@ vector<Army*> Country::attack(){
         aiArmy.push_back(new Vehicle("Tank", 0));
     }
 
+    cout << "went here" << endl;
     WarStrategy* attackStrategy = new Attacking();
     attackStrategy->handle(this->army, aiArmy, PlayerAttackType, CPUDefenseType);
 
@@ -565,4 +568,39 @@ void Country :: setMoney(double money) {
 
 vector<Army*> Country :: getArmy() {
     return this->army;
+}
+
+void Country :: setArmy(int numPlanes, int numTanks, int numShips, int numMajors, int numPrivates, int numSergeants) {
+
+    this->soldierFactory = new SoldierFactory();
+    this->vehicleFactory = new VehicleFactory();
+
+    Army* templateMajor = this->soldierFactory->create("Major", 0.5);
+    Army* templatePrivate = this->soldierFactory->create("Private", 0.5);
+    Army* templateSergeant = this->soldierFactory->create("Sergeant", 0.5);
+
+    for (int i = 0; i < numMajors; i++) {
+        this->army.push_back(templateMajor->clone());
+    }
+    for (int i = 0; i < numPrivates; i++) {
+        army.push_back(templatePrivate->clone());
+    }
+    for (int i = 0; i < numSergeants; i++) {
+        army.push_back(templateSergeant->clone());
+    }
+
+    Army* templatePlane = this->vehicleFactory->create("Plane", 0.5);
+    Army* templateTank = this->vehicleFactory->create("Tank", 0.5);
+    Army* templateShip = this->vehicleFactory->create("Ship", 0.5);
+
+    for (int i = 0; i < numPlanes; i++) {
+        army.push_back(templatePlane->clone());
+    }
+    for (int i = 0; i < numTanks; i++) {
+        army.push_back(templateTank->clone());
+    }
+    for (int i = 0; i < numShips; i++) {
+        army.push_back(templateShip->clone());
+    }
+
 }

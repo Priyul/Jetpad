@@ -11,7 +11,7 @@ class TransportObserver {
         TransportObserver();
         TransportObserver(Transport* transport); // constructer that initialises variables on creation
         ~TransportObserver();
-        virtual void notify() = 0;
+        virtual void notify(double num) = 0;
         Transport* getTransport();
         void setTransport(Transport* transport);
 }

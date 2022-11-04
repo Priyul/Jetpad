@@ -1,5 +1,6 @@
 #include "TransportSpy.h"
 #include "Bank.h"
+#include "Transport.h"
 using namespace std;
 
 TransportSpy::TransportSpy() {
@@ -14,8 +15,8 @@ TransportSpy::~TransportSpy() {
 
 }
 
-void TransportSpy::notify() {
-    // code here
+void TransportSpy::notify(double num) {
+    this->set(num);
 }
 
 Bank* TransportSpy::getBankList() {

@@ -13,8 +13,7 @@ class TransportSpy : public TransportObserver {
         TransportSpy();
         TransportSpy(Bank* bank); // constructer that initialises variables on creation
         ~TransportSpy();
-        void notify();
-        virtual void notifyBank(Country* country) = 0;
+        void notify(double num);
         Bank* getBankList();
         void setBankList(Bank* bank);
 }

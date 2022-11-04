@@ -26,7 +26,15 @@ public:
 
     /* BUILDER INTEGRATION */
     CountryBuilder* countryBuilder;
-    Country* buildCountry(string countryName, double money);
+    void buildCountry(string countryName, double money);
+
+    Country* getmyCountry();
+    Country* getAllyCountry();
+
+private:
+    Country* myCountry;
+    Country* allyCountry;
 
 };
+
 #endif

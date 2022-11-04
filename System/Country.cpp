@@ -16,9 +16,13 @@
 using namespace std;
 
 
-Country :: Country(string name, double money) {
-    this->countryName = name;
-    this->money = money;
+// Country :: Country(string name, double money) {
+//     this->countryName = name;
+//     this->money = money;
+// }
+
+Country :: Country() {
+    
 }
 
 Country :: ~Country() {

@@ -18,13 +18,14 @@ using namespace std;
 
 class Country {
 public:
-    Country(string name, double money); 
+    Country();
+    //Country(string name, double money); we dont need this anymore because the builder sorts everything out
     ~Country();
 
     string getCountryName();
     double getMoney();
 
-    vector<Army*> army;
+    vector<Army*> army; //move to private eventually
     void buildArmy();
     void showArmy();
     vector<Army*> attack();

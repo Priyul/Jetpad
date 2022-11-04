@@ -7,7 +7,12 @@
 #include "VehicleFactory.h"
 #include "ArmyFactory.h"
 
+#include "State.h"
+#include "Context.h"
+#include "StartOfWar.h"
+
 using namespace std;
+class State;
 
 int playerTurn(){
     int firstInput;
@@ -22,8 +27,16 @@ int playerTurn(){
 }
 
 int main() {
-    Country* america = new Country("America", 100000);
+    //Country* america = new Country("America", 100000);
+    //start of war state:
+    Context* currContext = new Context();
+    StartOfWar* currentState = new StartOfWar();
+    currentState->handleAction(currContext);
 
+    Country* myCountry = currentState->getmyCountry();
+    Country* allyCountry = currentState->getAllyCountry();
+    //Country* america = currentState->buildCountry("America", 10000);
+    //Action state below
     bool doCheck = true;
 
     while(doCheck) {
@@ -36,7 +49,7 @@ int main() {
             switch (firstInput) {
                 case 1:
                     cout << "Attack selected" << endl;
-                    returningArmy = america->attack();
+                    returningArmy = myCountry->attack(); //myCountry used instead of america
                     // if(!returningArmy.empty()){ //failed to attack due to insuffecient number of tr
                     //     firstPass = true;
                     // }
@@ -46,7 +59,7 @@ int main() {
                 case 2:
                     cout << "Build selected" << endl;
                     firstPass = true;
-                    america->buildArmy();
+                    myCountry->buildArmy();
                     break;
                 case 3:
                     cout << "Transport selected" << endl;
@@ -64,7 +77,7 @@ int main() {
         }
     }
 
-    america->showArmy();
+    myCountry->showArmy();
 
     return 0;
 }

@@ -33,7 +33,7 @@ void StartOfWar::handleAction(Context* c){
 
     string countryNames[12] = {"United State of America", "Russia", "China", "United Kingdom", "Canada", "Japan", "Australia", "Egypt", "Iraq","South Africa", "Zimbabwe", "Nepal"};
     double countryMoney[12] = {25000000.00, 21000000.00, 14000000.00, 13500000.00, 11000000.00 , 18250000.00, 9000000.00, 5000000.00, 4500000.00, 3800000.00, 2000000.00, 1000000.00 };
-
+    
     vector<string> countriesArray;
     for (int i = 0; i < 12; i++) {
         countriesArray.push_back(countryNames[i]);
@@ -61,7 +61,7 @@ void StartOfWar::handleAction(Context* c){
     cout << "The country you have selected: " << countryNames[num] <<endl;
 
     //selected country goes to createCountry function
-    buildCountry(countryNames[num], countryMoney[num]);
+    buildCountry(countryNames[num], countryMoney[num]); /**/
     
     //remove selected country from country vector
     auto it = find(countriesArray.begin(), countriesArray.end(), countriesArray[num]);
@@ -112,7 +112,7 @@ void StartOfWar::handleAction(Context* c){
     //     cout << "[" << *it2 << "]";
     // }
     
-    buildCountry(countryNames[randNumber], countryMoney[randNumber]);
+    buildCountry(countryNames[randNumber], countryMoney[randNumber]); /**/
 
     string var2 = "";
     cout << "Array after user picks country: " << endl;
@@ -136,7 +136,7 @@ void StartOfWar::handleAction(Context* c){
     cout << "\033[1;31m" <<"Select your alliances from the listed countries below: " << "\033[0m" << endl;
     
     for (int i = 0; i < countriesArray.size(); i++){
-        cout << i << " ==> " << countriesArray[i] << endl << <<"R: " << moneyArray[i] << endl <<
+        cout << i << " ==> " << countriesArray[i] << endl << "R " << moneyArray[i] << endl <<
             " Soilders available: "<< "Major available: " << "Sergent available: " << "Private available: " << endl <<
             "Vehicles available: " << "Tanks: " << "Ships: " << "Planes"  << endl;
         
@@ -157,7 +157,7 @@ string StartOfWar::getState(){
 
 
 /*BUILDER INTEGRATION */
-Country* StartOfWar :: buildCountry(string countryName, double money) {
+void StartOfWar :: buildCountry(string countryName, double money) {
     CountryBuilder* countryBuilder = new CountryBuilder();
     Director* countryDirector = new Director(countryBuilder);
     
@@ -166,12 +166,12 @@ Country* StartOfWar :: buildCountry(string countryName, double money) {
     //cout << "going into buildarmy function" << endl << endl << endl;
     countryDirector->countryBuilder->buildArmy();
 
-    Country* ourCountry = countryDirector->countryBuilder->getCountry();
+    this->myCountry = countryDirector->countryBuilder->getCountry();
 
     cout << "Country created: " << endl;
-    cout << "Country name: " << ourCountry->getCountryName() << endl;
+    cout << "Country name: " << this->myCountry->getCountryName() << endl;
     cout << fixed;
-    cout << "Country money: R" << setprecision(2) << ourCountry->getMoney() << endl << endl;
+    cout << "Country money: R" << setprecision(2) << this->myCountry->getMoney() << endl << endl;
 
     //after this, make countries for AI
     // string iname = "";
@@ -191,5 +191,14 @@ Country* StartOfWar :: buildCountry(string countryName, double money) {
     //     // cout << endl << AIcountry->getCountryName() << endl << AIcountry->getMoney() << endl;
     // }
 
-    return ourCountry;
+    //return ourCountry;
+}
+
+Country* StartOfWar :: getmyCountry() {
+    return this->myCountry;
+}
+
+
+Country* StartOfWar :: getAllyCountry() {
+    return this->allyCountry;
 }

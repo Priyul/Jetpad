@@ -30,6 +30,7 @@ public:
     void showArmy();
     vector<Army*> attack();
     vector<Army*> getArmy();
+    void setArmy(int numPlanes, int numTanks, int numShips, int numMajors, int numPrivates, int numSergeants);
 
     void countNumberOfIndividualTroops(vector<Army*> ourArmy);
     // void soldierInput(int input);
@@ -39,6 +40,16 @@ public:
 
     void setSoldierFactory(ArmyFactory* soldierFactory);
     void setVehicleFactory(ArmyFactory* vehicleFactory);
+
+    int numberOfMajors;
+    int numberOfSergeants;
+    int numberOfPrivates;
+
+    int numberOfTanks;
+    int numberOfPlanes;
+    int numberOfShips;
+
+    
 protected:
 
 
@@ -49,14 +60,6 @@ private:
 
     ArmyFactory* soldierFactory;
     ArmyFactory* vehicleFactory;
-
-    int numberOfMajors;
-    int numberOfSergeants;
-    int numberOfPrivates;
-
-    int numberOfTanks;
-    int numberOfPlanes;
-    int numberOfShips;
 };
 
 #endif

@@ -17,6 +17,8 @@ public:
     void setProbability(double p);
     string getType();
 
+    Army* clone();
+
 private:
     string rank;
 

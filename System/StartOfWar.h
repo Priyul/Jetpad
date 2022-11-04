@@ -27,9 +27,12 @@ public:
     /* BUILDER INTEGRATION */
     CountryBuilder* countryBuilder;
     void buildCountry(string countryName, double money);
+    Country* buildAllyCountry(string countryName, double money);
 
     Country* getmyCountry();
     Country* getAllyCountry();
+
+    void showAvailableAllies(vector<Country*> allyCountries);
 
 private:
     Country* myCountry;

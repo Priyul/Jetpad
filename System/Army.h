@@ -13,6 +13,8 @@ public:
     virtual string getType() = 0;
     virtual double getProbability() = 0;
     virtual void setProbability(double p) = 0;
+
+    virtual Army* clone() = 0;
 };
 
 #endif

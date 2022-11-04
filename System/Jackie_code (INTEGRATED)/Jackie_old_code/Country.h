@@ -25,20 +25,17 @@ public:
     string getCountryName();
     double getMoney();
 
-    vector<Army*> army; //move to private eventually
     void buildArmy();
     void showArmy();
     vector<Army*> attack();
-    vector<Army*> getArmy();
+    vector<Army*> army;
 
     void countNumberOfIndividualTroops(vector<Army*> ourArmy);
     // void soldierInput(int input);
 
     void setName(string name);
     void setMoney(double money);
-
-    void setSoldierFactory(ArmyFactory* soldierFactory);
-    void setVehicleFactory(ArmyFactory* vehicleFactory);
+    
 protected:
 
 
@@ -46,9 +43,7 @@ protected:
 private:
     double money;
     string countryName;
-
-    ArmyFactory* soldierFactory;
-    ArmyFactory* vehicleFactory;
+    //vector<Army*> army;
 
     int numberOfMajors;
     int numberOfSergeants;

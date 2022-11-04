@@ -1,9 +1,8 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
-
+#include <string>
 #include <iostream>
 #include "Army.h"
-
 using namespace std;
 
 class Vehicle : public Army {

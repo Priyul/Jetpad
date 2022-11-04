@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include "Soldier.h"
+using namespace std;
 
 Soldier :: Soldier(string rank, double probability) {
     this->rank = rank;

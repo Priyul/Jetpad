@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include "Army.h"
-
 using namespace std;
 
 class Soldier : public Army {

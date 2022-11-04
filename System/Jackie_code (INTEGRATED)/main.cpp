@@ -1,6 +1,6 @@
-#include "State.h"
-#include "Context.h"
-#include "StartOfWar.h"
+// #include "State.h"
+// #include "Context.h"
+// #include "StartOfWar.h"
 //#include "Action.h"
 #include <iostream>
 #include <string>
@@ -25,7 +25,7 @@ class State;
 using namespace std;
 
 int main() {
-    Context* currentState = new Context();
+    //Context* currentState = new Context();
     /* currentState is currently start of war */
     cout<<"Start of the War:"<<endl;
 
@@ -33,7 +33,7 @@ int main() {
 
 
 
-    currentState->change(); //currentState is now at buildPhase
+    //currentState->change(); //currentState is now at buildPhase
 
 
 

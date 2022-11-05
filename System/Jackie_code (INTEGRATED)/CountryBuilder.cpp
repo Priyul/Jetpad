@@ -285,7 +285,7 @@ int CountryBuilder :: chooseArmySize(string type){
     cout << "select option: > ";
     cin >> input;
     return input;
-}
+} //up  till here
 
 void CountryBuilder :: buildMoney(double money) {
     this->country->setMoney(money);

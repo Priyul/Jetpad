@@ -5,6 +5,10 @@
 #include <string>
 using namespace std;
 
+BuildPhase::BuildPhase(){
+    this->country = new Country();
+}
+
 void BuildPhase::handleAction(Context* c)
 {
     string ans;

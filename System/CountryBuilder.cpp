@@ -50,7 +50,7 @@ void CountryBuilder :: buildArmy() {
         //plane tank ship, major private sergeant
     }
 
-    cout << endl << endl << "ARMY MADE" << endl << endl;
+    //cout << endl << endl << "ARMY MADE" << endl << endl;
 }
 
 void CountryBuilder :: buildMoney(double money) {

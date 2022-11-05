@@ -7,9 +7,14 @@
 #include<string>
 using namespace std;
 
+Action::Action(Country* selectedCountry){
+    this->selectedCountry = selectedCountry;
+}
+
 void Action::handleAction(Context* c){
     int num;
     cout<<"-----------------------------------------------"<<endl;
+    cout << selectedCountry->getCountryName() << " hii" << endl;
     cout<<c->getState()<<endl;
     cout<<"State: Action state"<<endl;
     cout<<"1. Build my troops."<<endl;

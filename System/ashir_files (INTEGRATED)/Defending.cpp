@@ -1,27 +1,28 @@
-#include "Attacking.h"
+#include "Defending.h"
 
 #include <string>
 #include <cstdlib>
 #include <random>
 #include <ctime>
 
-Attacking::Attacking(){
-     std::cout << "Attacking constructor called" << endl;
+Defending::Defending(){
+     std::cout << "Defending constructor called" << endl;
 }
 
-double randomNumber(double prob)  
-{
-    double number = rand() % 100 + 1;  //Generate random number 1 to 100
+// double randomNumber(double prob)  
+// {
+//     double number = rand() % 100 + 1;  //Generate random number 1 to 100
 
-    if (number <= prob*100) 
-        return 1;
-    else
-        return 0;     
-}
+//     if (number <= prob*100) 
+//         return 1;
+//     else
+//         return 0;     
+// }
 
-string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend){
+string Defending::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend){
     srand(time(NULL));
 
+    int result;
     int numberOfAttackingTanks = 0;
     int numberOfAttackingPlanes = 0;
     int numberOfAttackingShips = 0;
@@ -35,6 +36,190 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
     // for(int i=0; i<ourArmy.size(); i++){                                         //PRINT PLAYER1 ARMY BEFORE ATTACK COMMNECES
     //     cout << "ourArmy at: " << i << " " << ourArmy[i]->getRank() << endl;
     // }
+
+
+    //MAKING SOLDIERS FIGHT
+    int attSoldierCounter = 0;
+    int defendSoldierCounter = 0;
+
+    while(noOfAttackingPrivatesToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking sergeants die or all defending troops die
+        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Private"){//increment counter till soldier found in array
+            attSoldierCounter++;
+        }
+
+        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
+            defendSoldierCounter++;
+        }
+
+         string attRank = ourArmy[attSoldierCounter]->getRank();
+         string defRank = AIArmy[defendSoldierCounter]->getRank();
+
+          if (attRank == "Private")  {
+
+                switch(defRank[0]) {
+                    case 'M':
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        break;
+                    case 'P':
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        break;
+                    case 'S':
+                        ourArmy[attSoldierCounter]->setProbability(0.35);
+                        AIArmy[defendSoldierCounter]->setProbability(0.65);
+                        break;
+                    default:
+                        ourArmy[attSoldierCounter]->setProbability(0);
+                        AIArmy[defendSoldierCounter]->setProbability(0);
+                        break;
+                }
+
+            }
+
+            //result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+
+            if(result == 1){
+                numberOfDefendingSoldiers--;
+
+                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
+                if(it != AIArmy.end()){
+                    AIArmy.erase(it);
+                }
+            }else{
+                noOfAttackingPrivatesToSend--;
+                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
+                if(it != ourArmy.end()){
+                    ourArmy.erase(it);
+                }
+            }
+
+            cout << "Attacker privates remaining: " << noOfAttackingPrivatesToSend << endl;
+            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
+    }
+
+
+    attSoldierCounter = 0;
+    defendSoldierCounter = 0;
+
+    while(noOfAttackingSergeantsToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking sergeants die or all defending troops die
+        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Sergeant"){//increment counter till soldier found in array
+            attSoldierCounter++;
+        }
+
+        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
+            defendSoldierCounter++;
+        }
+
+         string attRank = ourArmy[attSoldierCounter]->getRank();
+         string defRank = AIArmy[defendSoldierCounter]->getRank();
+
+          if (attRank == "Sergeant")  {
+
+                switch(defRank[0]) {
+                    case 'M':
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        break;
+                    case 'P':
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        break;
+                    case 'S':
+                        ourArmy[attSoldierCounter]->setProbability(0.35);
+                        AIArmy[defendSoldierCounter]->setProbability(0.65);
+                        break;
+                    default:
+                        ourArmy[attSoldierCounter]->setProbability(0);
+                        AIArmy[defendSoldierCounter]->setProbability(0);
+                        break;
+                }
+
+            }
+
+            //Number(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+
+            if(result == 1){
+                numberOfDefendingSoldiers--;
+
+                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
+                if(it != AIArmy.end()){
+                    AIArmy.erase(it);
+                }
+            }else{
+                noOfAttackingSergeantsToSend--;
+                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
+                if(it != ourArmy.end()){
+                    ourArmy.erase(it);
+                }
+            }
+
+            cout << "Attacker Sergeants remaining: " << noOfAttackingSergeantsToSend << endl;
+            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
+    }
+
+
+    attSoldierCounter = 0;
+    defendSoldierCounter = 0;
+
+    while(noOfAttackingMajorsToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking majors die or all defending troops die
+        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Major"){//increment counter till soldier found in array
+            attSoldierCounter++;
+        }
+
+        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
+            defendSoldierCounter++;
+        }
+
+         string attRank = ourArmy[attSoldierCounter]->getRank();
+         string defRank = AIArmy[defendSoldierCounter]->getRank();
+
+          if (attRank == "Major")  {
+
+                switch(defRank[0]) {
+                    case 'M':
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        break;
+                    case 'P':
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        break;
+                    case 'S':
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        break;
+                    default:
+                        ourArmy[attSoldierCounter]->setProbability(0);
+                        AIArmy[defendSoldierCounter]->setProbability(0);
+                        break;
+                }
+
+            }
+
+            //result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+
+            if(result == 1){
+                numberOfDefendingSoldiers--;
+
+                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
+                if(it != AIArmy.end()){
+                    AIArmy.erase(it);
+                }
+            }else{
+                noOfAttackingMajorsToSend--;
+                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
+                if(it != ourArmy.end()){
+                    ourArmy.erase(it);
+                }
+            }
+
+            cout << "Attacker Majors remaining: " << noOfAttackingMajorsToSend << endl;
+            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
+    }
+
+
+
 
     for (int i = 0; i < ourArmy.size(); i++) {
         if(ourArmy[i]->getType() == "soldier") {
@@ -63,16 +248,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
             } 
         } 
     }
-
-    // cout << "Attacking soldiers: " << numberOfAttackingSoldiers << endl;
-    // cout << "Attacking tanks: " << numberOfAttackingTanks << endl;
-    // cout << "Attacking planes: " << numberOfAttackingPlanes << endl;
-    // cout << "Attacking ships: " << numberOfAttackingShips << endl;
-
-    // cout << "Defending soldiers: " << numberOfDefendingSoldiers << endl;
-    // cout << "Defending tanks: " << numberOfDefendingTanks << endl;
-    // cout << "Defending planes: " << numberOfDefendingPlanes << endl;
-    // cout << "Defending ships: " << numberOfDefendingShips << endl;
+    
 
     if(CPUDefenseStrategy == "LandDefense"){
         if(playerAttackStrategy == "LandAttack"){
@@ -245,13 +421,12 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
         }
 
-}
+    }
 
 
     //simulate the fight between the vehicles:
     int attVehicleCounter = 0;
     int defendVehicleCounter = 0;
-    int result;
 
     if(playerAttackStrategy == "LandAttack"){
         if(CPUDefenseStrategy == "LandDefense"){
@@ -265,7 +440,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -298,7 +473,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -330,7 +505,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -364,7 +539,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -397,7 +572,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -429,7 +604,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -463,7 +638,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -496,7 +671,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -528,7 +703,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                //result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -552,188 +727,6 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
         }
     }
 
-
-
-
-    //MAKING SOLDIERS FIGHT
-    int attSoldierCounter = 0;
-    int defendSoldierCounter = 0;
-
-    while(noOfAttackingPrivatesToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking sergeants die or all defending troops die
-        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Private"){//increment counter till soldier found in array
-            attSoldierCounter++;
-        }
-
-        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
-            defendSoldierCounter++;
-        }
-
-         string attRank = ourArmy[attSoldierCounter]->getRank();
-         string defRank = AIArmy[defendSoldierCounter]->getRank();
-
-          if (attRank == "Private")  {
-
-                switch(defRank[0]) {
-                    case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
-                        break;
-                    case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
-                        break;
-                    case 'S':
-                        ourArmy[attSoldierCounter]->setProbability(0.35);
-                        AIArmy[defendSoldierCounter]->setProbability(0.65);
-                        break;
-                    default:
-                        ourArmy[attSoldierCounter]->setProbability(0);
-                        AIArmy[defendSoldierCounter]->setProbability(0);
-                        break;
-                }
-
-            }
-
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
-
-            if(result == 1){
-                numberOfDefendingSoldiers--;
-
-                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
-                if(it != AIArmy.end()){
-                    AIArmy.erase(it);
-                }
-            }else{
-                noOfAttackingPrivatesToSend--;
-                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
-                if(it != ourArmy.end()){
-                    ourArmy.erase(it);
-                }
-            }
-
-            cout << "Attacker privates remaining: " << noOfAttackingPrivatesToSend << endl;
-            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
-    }
-
-
-    attSoldierCounter = 0;
-    defendSoldierCounter = 0;
-
-    while(noOfAttackingSergeantsToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking sergeants die or all defending troops die
-        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Sergeant"){//increment counter till soldier found in array
-            attSoldierCounter++;
-        }
-
-        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
-            defendSoldierCounter++;
-        }
-
-         string attRank = ourArmy[attSoldierCounter]->getRank();
-         string defRank = AIArmy[defendSoldierCounter]->getRank();
-
-          if (attRank == "Sergeant")  {
-
-                switch(defRank[0]) {
-                    case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
-                        break;
-                    case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
-                        break;
-                    case 'S':
-                        ourArmy[attSoldierCounter]->setProbability(0.35);
-                        AIArmy[defendSoldierCounter]->setProbability(0.65);
-                        break;
-                    default:
-                        ourArmy[attSoldierCounter]->setProbability(0);
-                        AIArmy[defendSoldierCounter]->setProbability(0);
-                        break;
-                }
-
-            }
-
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
-
-            if(result == 1){
-                numberOfDefendingSoldiers--;
-
-                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
-                if(it != AIArmy.end()){
-                    AIArmy.erase(it);
-                }
-            }else{
-                noOfAttackingSergeantsToSend--;
-                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
-                if(it != ourArmy.end()){
-                    ourArmy.erase(it);
-                }
-            }
-
-            cout << "Attacker Sergeants remaining: " << noOfAttackingSergeantsToSend << endl;
-            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
-    }
-
-
-    attSoldierCounter = 0;
-    defendSoldierCounter = 0;
-
-    while(noOfAttackingMajorsToSend > 0 && numberOfDefendingSoldiers > 0){ //either attacking majors die or all defending troops die
-        while(ourArmy[attSoldierCounter]->getType() != "soldier" || ourArmy[attSoldierCounter]->getRank() != "Major"){//increment counter till soldier found in array
-            attSoldierCounter++;
-        }
-
-        while(AIArmy[defendSoldierCounter]->getType() != "soldier"){//increment counter till soldier found in array
-            defendSoldierCounter++;
-        }
-
-         string attRank = ourArmy[attSoldierCounter]->getRank();
-         string defRank = AIArmy[defendSoldierCounter]->getRank();
-
-          if (attRank == "Major")  {
-
-                switch(defRank[0]) {
-                    case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
-                        break;
-                    case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
-                        break;
-                    case 'S':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
-                        break;
-                    default:
-                        ourArmy[attSoldierCounter]->setProbability(0);
-                        AIArmy[defendSoldierCounter]->setProbability(0);
-                        break;
-                }
-
-            }
-
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
-
-            if(result == 1){
-                numberOfDefendingSoldiers--;
-
-                auto it = find(AIArmy.begin(), AIArmy.end(), AIArmy[defendSoldierCounter]);
-                if(it != AIArmy.end()){
-                    AIArmy.erase(it);
-                }
-            }else{
-                noOfAttackingMajorsToSend--;
-                auto it = find(ourArmy.begin(), ourArmy.end(), ourArmy[attSoldierCounter]);
-                if(it != ourArmy.end()){
-                    ourArmy.erase(it);
-                }
-            }
-
-            cout << "Attacker Majors remaining: " << noOfAttackingMajorsToSend << endl;
-            cout << "Defender troops remaining: " << numberOfDefendingSoldiers << endl;
-    }
 
 
 

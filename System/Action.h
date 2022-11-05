@@ -5,9 +5,15 @@
 #include<string>
 using namespace std;
 
+#include "Country.h"
 class Action: public State{
     public:
         virtual void handleAction(Context* c);
         virtual string getState();
+
+        Action(Country* selectedCountry);
+
+    private:
+        Country* selectedCountry;
 };
 #endif

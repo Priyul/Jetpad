@@ -15,6 +15,8 @@
 
 //including decorator transportation
 #include "ShortRoute.h"
+#include "MediumRoute.h"
+#include "LongRoute.h"
 
 using namespace std;
 
@@ -611,10 +613,16 @@ void Country::addRoute(){
         Transport* shortRoute = new ShortRoute(this->baseTransportRoute);
         cout << shortRoute->getDescription() << endl;
         cout << "Amount: " << shortRoute->getMoneyGained() << endl;
-        cout << "Numbr of turns to skip: " << shortRoute->getTurnsToSkip() << endl; //so to use the skip turn feature, we iterate through the array of 6 countries and call this method for each country. If the method returns a value greater than 0, the next player will play their turn
+        cout << "Number of turns to skip: " << shortRoute->getTurnsToSkip() << endl; //so to use the skip turn feature, we iterate through the array of 6 countries and call this method for each country. If the method returns a value greater than 0, the next player will play their turn
     }else if(input == 2){
-        cout << "nothing" << endl;
+        Transport* mediumRoute = new MediumRoute(this->baseTransportRoute);
+        cout << mediumRoute->getDescription() << endl;
+        cout << "Amount: " << mediumRoute->getMoneyGained() << endl;
+        cout << "Number of turns to skip: " << mediumRoute->getTurnsToSkip() << endl;
     }else if(input == 3){
-        cout << "nothing" << endl;
+        Transport* longRoute = new LongRoute(this->baseTransportRoute);
+        cout << longRoute->getDescription() << endl;
+        cout << "Amount: " << longRoute->getMoneyGained() << endl;
+        cout << "Number of turns to skip: " << longRoute->getTurnsToSkip() << endl;
     }
 }

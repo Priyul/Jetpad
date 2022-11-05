@@ -569,3 +569,38 @@ void Country :: setMoney(double money) {
 vector<Army*> Country :: getArmy() {
     return this->army;
 }
+
+void Country :: setArmy(int numPlanes, int numTanks, int numShips, int numMajors, int numPrivates, int numSergeants) {
+
+    this->soldierFactory = new SoldierFactory();
+    this->vehicleFactory = new VehicleFactory();
+
+    Army* templateMajor = this->soldierFactory->create("Major", 0.5);
+    Army* templatePrivate = this->soldierFactory->create("Private", 0.5);
+    Army* templateSergeant = this->soldierFactory->create("Sergeant", 0.5);
+
+    for (int i = 0; i < numMajors; i++) {
+        this->army.push_back(templateMajor->clone());
+    }
+    for (int i = 0; i < numPrivates; i++) {
+        army.push_back(templatePrivate->clone());
+    }
+    for (int i = 0; i < numSergeants; i++) {
+        army.push_back(templateSergeant->clone());
+    }
+
+    Army* templatePlane = this->vehicleFactory->create("Plane", 0.5);
+    Army* templateTank = this->vehicleFactory->create("Tank", 0.5);
+    Army* templateShip = this->vehicleFactory->create("Ship", 0.5);
+
+    for (int i = 0; i < numPlanes; i++) {
+        army.push_back(templatePlane->clone());
+    }
+    for (int i = 0; i < numTanks; i++) {
+        army.push_back(templateTank->clone());
+    }
+    for (int i = 0; i < numShips; i++) {
+        army.push_back(templateShip->clone());
+    }
+
+}

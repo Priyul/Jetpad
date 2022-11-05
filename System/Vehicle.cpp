@@ -25,3 +25,7 @@ double Vehicle :: getProbability() {
 void Vehicle::setProbability(double p) {
     this->probability = p;
 }
+
+Army* Vehicle:: clone() {
+    return this;
+}

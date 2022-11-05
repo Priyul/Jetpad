@@ -22,7 +22,7 @@ using namespace std;
 // }
 
 Country :: Country() {
-    
+    this->isMainCountry = false;
 }
 
 Country :: ~Country() {

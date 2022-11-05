@@ -36,6 +36,7 @@ public:
 
     void showAvailableAllies(vector<Country*> allyCountries);
 
+
 private:
     Country* myCountry;
     Country* allyCountry;

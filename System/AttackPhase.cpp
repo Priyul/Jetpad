@@ -38,5 +38,5 @@ void AttackPhase::handleAction(Context* c)
 }
 
 string AttackPhase::getState(){
-    return "(Attack state)";
+    return "Attack state";
 }

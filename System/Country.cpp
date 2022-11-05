@@ -604,3 +604,11 @@ void Country :: setArmy(int numPlanes, int numTanks, int numShips, int numMajors
     }
 
 }
+
+void Country :: setCostOfCountry(double cost) {
+    this->costOfCountry = cost;
+}
+
+double Country :: getCostOfCountry() {
+    return this->costOfCountry;
+}

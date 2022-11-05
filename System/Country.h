@@ -50,14 +50,17 @@ public:
     int numberOfShips;
 
     bool isMainCountry; //i only added this
-     
-protected:
+
+    void setCostOfCountry(double cost);
+    double getCostOfCountry();
 
 
 
 private:
     double money;
     string countryName;
+
+    double costOfCountry;
 
     ArmyFactory* soldierFactory;
     ArmyFactory* vehicleFactory;

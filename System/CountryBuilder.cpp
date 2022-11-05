@@ -2,6 +2,7 @@
 
 CountryBuilder :: CountryBuilder() {
     this->country = new Country();
+    this->country->setCostOfCountry(0); //change according to values
 }
     
 void CountryBuilder :: buildName(string name) {

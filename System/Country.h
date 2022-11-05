@@ -49,9 +49,8 @@ public:
     int numberOfPlanes;
     int numberOfShips;
 
-    bool isMainCountry;
-
-    
+    bool isMainCountry; //i only added this
+     
 protected:
 
 

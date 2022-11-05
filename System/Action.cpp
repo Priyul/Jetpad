@@ -7,10 +7,15 @@
 #include<string>
 using namespace std;
 
+Action :: Action (Engine* engine) {
+    this->engine = engine;
+}
+
 void Action::handleAction(Context* c){
     int num;
     cout<<"-----------------------------------------------"<<endl;
     cout<<c->getState()<<endl;
+
     cout<<"State: Action state"<<endl;
     cout<<"1. Build my troops."<<endl;
     cout<<"2. Attack a country"<<endl;
@@ -21,15 +26,15 @@ void Action::handleAction(Context* c){
 
     if(num == 1)
     {
-        c->setState(new BuildPhase());
+        c->setState(new BuildPhase(this->engine));
     }
     else if(num == 2)
     {
-        c->setState(new AttackPhase());
+        c->setState(new AttackPhase(this->engine));
     }
     else if(num == 3)
     {
-        c->setState(new TransportPhase());
+        c->setState(new TransportPhase(this->engine));
     }
 }
 

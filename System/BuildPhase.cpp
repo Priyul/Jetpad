@@ -5,6 +5,10 @@
 #include <string>
 using namespace std;
 
+BuildPhase :: BuildPhase(Engine* engine) {
+    this->engine = engine;
+}
+
 void BuildPhase::handleAction(Context* c)
 {
     string ans;
@@ -19,7 +23,7 @@ void BuildPhase::handleAction(Context* c)
     cin>>ans;
     if(ans == "y")
     {
-        c->setState(new Action());
+        c->setState(new Action(this->engine));
     } else {
 
     }

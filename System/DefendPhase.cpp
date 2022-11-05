@@ -6,6 +6,10 @@
 #include <string>
 using namespace std;
 
+DefendPhase :: DefendPhase(Engine* engine) {
+    this->engine;
+}
+
 void DefendPhase::handleAction(Context* c)
 {
     int num;
@@ -22,7 +26,7 @@ void DefendPhase::handleAction(Context* c)
     cin>>num;
     if(num == 1)
     {
-        c->setState(new Action());
+        c->setState(new Action(this->engine));
     }
     else if(num == 2)
     {

@@ -7,6 +7,10 @@
 #include <string>
 using namespace std;
 
+AttackPhase :: AttackPhase(Engine *engine) {
+    this->engine = engine;
+}
+
 void AttackPhase::handleAction(Context* c)
 {
     int num;
@@ -16,19 +20,15 @@ void AttackPhase::handleAction(Context* c)
     cout<<endl;
     //cout<< "Country "<< this->myCountry->getName() << "is declaring war on "<< << endl;
     cout<<endl; 
-    cout<<"For Testing"<<endl;
-    cout<<"1. Attack next country"<<endl;
-    cout<<"2. Defend"<<endl;
-    cout<<"3. Win the war"<<endl;
-    cout<<"Select your next action by enter the number: ";
+
     cin>>num;
     if(num == 1)
     {
-        c->setState(new Action());
+        c->setState(new Action(this->engine));
     }
     else if(num == 2)
     {
-        c->setState(new DefendPhase());
+        c->setState(new DefendPhase(this->engine));
     }
     else if(num == 3)
     {
@@ -38,5 +38,5 @@ void AttackPhase::handleAction(Context* c)
 }
 
 string AttackPhase::getState(){
-    return "(Attack action.)";
+    return "(Attack state)";
 }

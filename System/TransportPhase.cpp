@@ -5,6 +5,10 @@
 #include <string>
 using namespace std;
 
+TransportPhase :: TransportPhase(Engine* engine) {
+    this->engine = engine;
+}
+
 void TransportPhase::handleAction(Context* c)
 {
     string ans;
@@ -21,7 +25,7 @@ void TransportPhase::handleAction(Context* c)
 
     if(ans=="y")
     {
-         c->setState(new DefendPhase());
+         c->setState(new DefendPhase(this->engine));
     }
    
    

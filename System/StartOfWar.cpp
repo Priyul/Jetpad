@@ -61,7 +61,7 @@ void StartOfWar::handleAction(Context* c){
     cout << "The country you have selected: " << countriesVector[num]->getCountryName() <<endl;
 
     P1Country = countriesVector[num]; //p1 country stored in as an object
-
+    P1Vector.push_back(P1Country);
     //remove selected country from country vector
     auto it = find(countriesVector.begin(), countriesVector.end(), countriesVector[num]);
     if(it != countriesVector.end()){
@@ -87,6 +87,8 @@ void StartOfWar::handleAction(Context* c){
     cout << "The country you have selected: " << countriesVector[P2input]->getCountryName() <<endl;
 
     P2Country = countriesVector[P2input]; //p1 country stored in as an object
+    P2Vector.push_back(P2Country);
+
 
     //remove selected country from country vector
     auto it5 = find(countriesVector.begin(), countriesVector.end(), countriesVector[P2input]);
@@ -99,7 +101,7 @@ void StartOfWar::handleAction(Context* c){
 
     cout << "\033[1;31m" <<"Select your alliances from the listed countries below: " << "\033[0m" << endl;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
     /* ~~~ P1 TURN ~~~ */
         //show available alliances...
         showAvailableAllies(countriesVector);
@@ -108,7 +110,7 @@ void StartOfWar::handleAction(Context* c){
         cin >> AllyInput1;
 
         P1Vector.push_back(countriesVector[AllyInput1]);
-        cout << "Hello " << countriesVector[AllyInput1]->getCountryName() << endl;
+        //cout << "picked ally " << countriesVector[AllyInput1]->getCountryName() << endl;
 
         auto it6 = find(countriesVector.begin(), countriesVector.end(), countriesVector[AllyInput1]);
         if(it6 != countriesVector.end()){
@@ -131,7 +133,30 @@ void StartOfWar::handleAction(Context* c){
         }
     }
 
-    c->setState(new Action());// implement
+    Engine* engine = new Engine(P1Vector, P2Vector);
+
+/* select which country to pick from list of allies */
+    int input;
+    Country* P1Selected;
+    cout << "\033[1;31m" << "P1 select which country to attack with:" << "\033[0m" << endl;
+    for (int i = 0; i < P1Vector.size(); i++) {
+        cout << i << " ==> " << P1Vector[i]->getCountryName() << endl;
+    }
+    cin >> input;
+    P1Selected = P1Vector[input];
+
+    engine->P1SelectedCountry = P1Selected;
+
+    // Country* P2SelectedCountry;
+    // cout << "\033[1;31m" << "P1 select which country to attack with:" << "\033[0m" << endl;
+    // for (int i = 0; i < P2Vector.size(); i++) {
+    //     cout << i << " ==> " << P2Vector[i]->getCountryName() << endl;
+    // }
+    // cin >> input;
+    // P2SelectedCountry = P2Vector[input];
+
+
+    c->setState(new Action(engine));// implement
 
 }
 
@@ -139,29 +164,6 @@ string StartOfWar::getState(){
     return "(Start of the War)";
 }
 
-
-/*BUILDER INTEGRATION */
-// void StartOfWar :: buildCountry(string countryName, double money) {
-//     CountryBuilder* countryBuilder = new CountryBuilder();
-//     Director* countryDirector = new Director(countryBuilder);
-    
-//     countryDirector->countryBuilder->buildName(countryName);
-//     countryDirector->countryBuilder->buildMoney(money);
-//     //cout << "going into buildarmy function" << endl << endl << endl;
-//     countryDirector->countryBuilder->buildArmy(); //automated
-    
-//     this->myCountry = countryDirector->countryBuilder->getCountry();
-//     this->myCountry->countNumberOfIndividualTroops(this->myCountry->army);
-
-//     this->myCountry->setMoney(50000000);
-//     this->myCountry->army.clear();
-
-//     cout << "Country created :)" << endl;
-//     cout << "Country name: " << this->myCountry->getCountryName() << endl;
-//     cout << fixed;
-//     cout << "Country money: R" << setprecision(2) << this->myCountry->getMoney() << endl << endl;
-
-// }
 
 Country* StartOfWar :: getmyCountry() {
     return this->myCountry;

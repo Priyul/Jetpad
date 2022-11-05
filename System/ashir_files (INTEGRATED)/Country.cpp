@@ -13,6 +13,9 @@
 #include "WarStrategy.h"
 #include "Attacking.h"
 
+//including decorator transportation
+#include "ShortRoute.h"
+
 using namespace std;
 
 
@@ -22,7 +25,7 @@ using namespace std;
 // }
 
 Country :: Country() {
-    
+    this->baseTransportRoute = new Route;
 }
 
 Country :: ~Country() {
@@ -50,9 +53,9 @@ int chooseArmyType(){
 int chooseSoldierRank(){
     int input;
     cout << "\033[1;31m" << "Choose soldier rank" << "\033[0m" << endl;
-    cout << "1. Major [R 500]" << endl;
-    cout << "2. Sergeant [R 100]" << endl;
-    cout << "3. Private [R 50]" << endl;
+    cout << "1. Major [R 5000]" << endl;
+    cout << "2. Sergeant [R 3500]" << endl;
+    cout << "3. Private [R 1500]" << endl;
     cout << "select option: > ";
     cin >> input;
     return input;
@@ -201,7 +204,7 @@ void Country::buildArmy() {
                         cout << "test: " << secondInput << endl;
                         cout << "test: " << thirdInput << endl;
                         if(secondInput == 1) { //rank is major
-                            double cost = thirdInput * 500;
+                            double cost = thirdInput * 5000;
                             if(cost > this->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -216,7 +219,7 @@ void Country::buildArmy() {
                                 thirdPass = true;
                             }
                         } else if(secondInput == 2)  { //rank is sergeant
-                            double cost = thirdInput * 100;
+                            double cost = thirdInput * 3500;
                             if(cost > this->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -231,7 +234,7 @@ void Country::buildArmy() {
                                 thirdPass = true;
                             }
                         } else if(secondInput == 3) { //rank is private
-                            double cost = thirdInput * 50;
+                            double cost = thirdInput * 1500;
                             if(cost > this->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -348,7 +351,7 @@ void Country::countNumberOfIndividualTroops(vector<Army*> ourArmy){
     this->numberOfShips = tempShipCount;
 }
 
-vector<Army*> Country::attack(){
+string Country::attack(){
 
     countNumberOfIndividualTroops(this->army);
     
@@ -356,9 +359,9 @@ vector<Army*> Country::attack(){
     int CPUDefenseChoice;
     int AttackStrategyInput = -1;
     int ChooseNumberOfVehiclesToSend = -1;
-    int ChooseNumberOfMajorsToSend;
-    int ChooseNumberOfSergeantsToSend;
-    int ChooseNumberOfPrivatesToSend;
+    int ChooseNumberOfMajorsToSend = 0;
+    int ChooseNumberOfSergeantsToSend = 0;
+    int ChooseNumberOfPrivatesToSend = 0;
 
     string vehicleChosenForAttack;
     string PlayerAttackType;
@@ -398,57 +401,57 @@ vector<Army*> Country::attack(){
             break;
         case 2:
             vehicleChosenForAttack = "Plane";
-            PlayerAttackType = "PlaneAttack";
+            PlayerAttackType = "AirAttack";
             break;
         case 3:
             vehicleChosenForAttack = "Ship";
-            PlayerAttackType = "ShipAttack";
+            PlayerAttackType = "SeaAttack";
             break;
     }
     
     if(vehicleChosenForAttack == "Tank"){
-        if(this->numberOfTanks > 1){
+        if(this->numberOfTanks >= 1){
             cout << "\033[1;31m" << "How many " << vehicleChosenForAttack << "s would you like to send for this attack? " << "\033[7;32m" << "Available: "  << this->numberOfTanks << "\033[0m" << endl;
             cout << "select option: > ";
             cin >> ChooseNumberOfVehiclesToSend;
         }else{
             cout << "\033[7;31m" << "You do not have any tanks to make this kind of attack. Select a new attack strategy or build more tanks " << "\033[7;32m" << "Available: "  << this->numberOfTanks << "\033[0m" << endl;
-            return vector<Army*>();
+            return "notanks";
         }
     }else if(vehicleChosenForAttack == "Plane"){
-        if(this->numberOfPlanes > 1){
+        if(this->numberOfPlanes >= 1){
             cout << "\033[1;31m" << "How many " << vehicleChosenForAttack << "s would you like to send for this attack? " << "\033[7;32m" << "Available: "  << this->numberOfPlanes << "\033[0m" << endl;
             cout << "select option: > ";
             cin >> ChooseNumberOfVehiclesToSend;
         }else{
             cout << "\033[7;31m" << "You do not have any planes to make this kind of attack. Select a new attack strategy or build more planes " << "\033[7;32m" << "Available: "  << this->numberOfPlanes << "\033[0m" << endl;
-            return vector<Army*>();
+            return "noplanes";
         }
     }else if(vehicleChosenForAttack == "Ship"){
-        if(this->numberOfShips > 1){
+        if(this->numberOfShips >= 1){
             cout << "\033[1;31m" << "How many " << vehicleChosenForAttack << "s would you like to send for this attack? " << "\033[7;32m" << "Available: "  << this->numberOfShips << "\033[0m" << endl;
             cout << "select option: > ";
             cin >> ChooseNumberOfVehiclesToSend;
         }else{
             cout << "\033[7;31m" << "You do not have any ships to make this kind of attack. Select a new attack strategy or build more ships " << "\033[7;32m" << "Available: "  << this->numberOfShips << "\033[0m" << endl;
-            return vector<Army*>();
+            return "noships";
         }
     }
 
     if(vehicleChosenForAttack == "Tank"){
         if(ChooseNumberOfVehiclesToSend > this->numberOfTanks){
             cout << "\033[7;31m" << "You do not have enough tanks to make this kind of attack. Select a new attack strategy or build more tanks " << "\033[7;32m" << "Available: "  << this->numberOfTanks << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientTanks";
         }
     }else if(vehicleChosenForAttack == "Plane"){
         if(ChooseNumberOfVehiclesToSend > this->numberOfPlanes){
             cout << "\033[7;31m" << "You do not have enough planes to make this kind of attack. Select a new attack strategy or build more planes " << "\033[7;32m" << "Available: "  << this->numberOfPlanes << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientPlanes";
         }
     }else if(vehicleChosenForAttack == "Ship"){
         if(ChooseNumberOfVehiclesToSend > this->numberOfShips){
             cout << "\033[7;31m" << "You do not have enough ships to make this kind of attack. Select a new attack strategy or build more ships " << "\033[7;32m" << "Available: "  << this->numberOfShips << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientShips";
         }
     }
 
@@ -459,7 +462,7 @@ vector<Army*> Country::attack(){
 
         if(ChooseNumberOfMajorsToSend > this->numberOfMajors){
             cout << "\033[7;31m" << "You do not have enough majors to make this kind of attack. Pick fewer mages to send to war or make more majors instead " << "\033[7;32m" << "Available: "  << this->numberOfMajors << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientMajors";
         }
     }
 
@@ -470,7 +473,7 @@ vector<Army*> Country::attack(){
 
         if(ChooseNumberOfSergeantsToSend > this->numberOfSergeants){
             cout << "\033[7;31m" << "You do not have enough sergeants to make this kind of attack. Pick fewer sergeants to send to war or make more sergeants instead " << "\033[7;32m" << "Available: "  << this->numberOfSergeants << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientSergeants";
         }
     }
 
@@ -481,12 +484,12 @@ vector<Army*> Country::attack(){
 
         if(ChooseNumberOfPrivatesToSend > this->numberOfPrivates){
             cout << "\033[7;31m" << "You do not have enough privates to make this kind of attack. Pick fewer privates to send to war or make more privates instead " << "\033[7;32m" << "Available: "  << this->numberOfPrivates << "\033[0m" << endl;
-            return vector<Army*>();
+            return "insuffecientPrivates";
         }
     }
 
 
-    vector<Army*> aiArmy;
+    vector<Army*> aiArmy;    //testing begin
 
     for(int i=0; i<20; i++){
         aiArmy.push_back(new Soldier("Private", 0.5));
@@ -508,9 +511,26 @@ vector<Army*> Country::attack(){
         aiArmy.push_back(new Vehicle("Tank", 0));
     }
 
-    WarStrategy* attackStrategy = new Attacking();
-    attackStrategy->handle(this->army, aiArmy, PlayerAttackType, CPUDefenseType);
+    for(int i=0; i<aiArmy.size(); i++){
+        cout << "aiArmy at: " << i << " " << aiArmy[i]->getRank() << endl;
+    }
 
+    WarStrategy* attackStrategy = new Attacking();
+    
+    cout << CPUDefenseType << endl;
+
+    attackStrategy->handle(this->army, aiArmy, PlayerAttackType, CPUDefenseType, ChooseNumberOfVehiclesToSend, ChooseNumberOfMajorsToSend, ChooseNumberOfSergeantsToSend, ChooseNumberOfPrivatesToSend);
+
+    cout << "after attack" << endl;
+    for(int i=0; i<this->army.size(); i++){
+        cout << "Our army after attack: " << this->army[i]->getRank() << endl;
+    }
+
+    for(int i=0; i<aiArmy.size(); i++){
+        cout << "Ai army after attack: " << aiArmy[i]->getRank() << endl;  //testing end
+    }
+
+    return "attackSuccess";
 }
 
 
@@ -565,4 +585,36 @@ void Country :: setMoney(double money) {
 
 vector<Army*> Country :: getArmy() {
     return this->army;
+}
+
+void Country::addRoute(){
+    int input;
+    bool firstPass = false;
+
+    while(!firstPass){
+        cout << "\033[1;31m" << "Which transport route would you like to take?:" << "\033[0m" << endl;
+        cout << "1. Short route [" << "\033[1;31m" << "Skip 1 turn" << "\033[0m" << " | " << "\033[1;32m" << "Get R 100 000" << "\033[0m" << "]" << endl;
+        cout << "2. Medium route [" << "\033[1;31m" << "Skip 2 turns" << "\033[0m" << " | " << "\033[1;32m" << "Get R 500 000" << "\033[0m" << "]" << endl;
+        cout << "3. Long route [" << "\033[1;31m" << "Skip 3 turns" << "\033[0m" << " | " << "\033[1;32m" << "Get R 1 500 000" << "\033[0m" << "]" << endl;
+        cin >> input;
+
+        if(input != 1 && input != 2 && input != 3){
+            cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
+        } else{
+            firstPass = true;
+        }
+    }
+
+    //remember to set the money for after the transportation succeeds
+    std::cout << endl << "Active transport operations:" << std::endl;
+    if(input == 1){
+        Transport* shortRoute = new ShortRoute(this->baseTransportRoute);
+        cout << shortRoute->getDescription() << endl;
+        cout << "Amount: " << shortRoute->getMoneyGained() << endl;
+        cout << "Numbr of turns to skip: " << shortRoute->getTurnsToSkip() << endl; //so to use the skip turn feature, we iterate through the array of 6 countries and call this method for each country. If the method returns a value greater than 0, the next player will play their turn
+    }else if(input == 2){
+        cout << "nothing" << endl;
+    }else if(input == 3){
+        cout << "nothing" << endl;
+    }
 }

@@ -43,6 +43,9 @@ int main() {
     //Action state below
     bool doCheck = true;
 
+
+    ///IMPORTANT NOTE - To make the while loop of the action state terminate, set firstpass = true AND doCheck = false
+
     while(doCheck) {
         int firstInput = playerTurn();
         bool firstPass = false;
@@ -53,12 +56,9 @@ int main() {
             switch (firstInput) {
                 case 1:
                     cout << "Attack selected" << endl;
-                    returningArmy = myCountry->attack(); //myCountry used instead of america
-                    // if(!returningArmy.empty()){ //failed to attack due to insuffecient number of tr
-                    //     firstPass = true;
-                    // }
                     firstPass = true;
-                    // doCheck = true; //idk if this is supposed to be here anymore, check again
+                    myCountry->attack(); //myCountry used instead of america
+                    doCheck = false;
                     break;
                 case 2:
                     cout << "Build selected" << endl;
@@ -68,6 +68,7 @@ int main() {
                 case 3:
                     cout << "Transport selected" << endl;
                     firstPass = true;
+                    myCountry->addRoute();
                     doCheck = true;
                     break;
                 case 4:

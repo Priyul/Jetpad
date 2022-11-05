@@ -121,11 +121,11 @@ void StartOfWar::handleAction(Context* c){
         cout << "\033[1;31m" << "P1 select your allies:" << "\033[0m" << endl;
         cin >> AllyInput1;
 
-        //remove country from available allies array
-        auto it5 = find(countriesVector.begin(), countriesVector.end(), temp);
-        if(it5 != countriesVector.end()){
-            countriesVector.erase(it5);
-        }
+        // //remove country from available allies array
+        // auto it5 = find(countriesVector.begin(), countriesVector.end(), temp);
+        // if(it5 != countriesVector.end()){
+        //     countriesVector.erase(it5);
+        // }
 
 /* ~~~ P2 TURN ~~~ */
         showAvailableAllies(countriesVector);

@@ -1,4 +1,4 @@
-#inclue "ArmyPrototype.h"
+#include "ArmyPrototype.h"
 using namespace std;
 
 ArmyPrototype::ArmyPrototype() {

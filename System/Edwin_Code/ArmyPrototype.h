@@ -7,4 +7,6 @@ class ArmyPrototype {
         ArmyPrototype();
         ~ArmyPrototype();
         virtual ArmyPrototype* clone() = 0;
-}
+};
+
+#endif

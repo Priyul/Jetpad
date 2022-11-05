@@ -12,9 +12,9 @@ Bank::~Bank() {
 }
 
 double Bank::get() {
-    return Country->getMoney();
+    return this->Country::getMoney();
 }
 
 void Bank::set(double num) {
-    Country->setMoney(Country.getMoney() + num);
+    this->Country::setMoney(this->Country::getMoney() + num);
 }

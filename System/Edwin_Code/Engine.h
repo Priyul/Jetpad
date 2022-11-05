@@ -13,4 +13,6 @@ class Engine {
 
         void assignP1(Country* country);
         void assignP2(Country* country);
-}
+};
+
+#endif

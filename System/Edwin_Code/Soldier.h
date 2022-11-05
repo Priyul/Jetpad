@@ -9,7 +9,7 @@ class Soldier : public Army {
 public:
     Soldier();
     Soldier(string rank, double probability);
-    Soldier(const Soldier& soldier)
+    Soldier(const Soldier& soldier);
     ~Soldier();
 
     string getRank();

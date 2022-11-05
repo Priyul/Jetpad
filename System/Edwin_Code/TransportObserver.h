@@ -14,4 +14,6 @@ class TransportObserver {
         virtual void notify(double num) = 0;
         Transport* getTransport();
         void setTransport(Transport* transport);
-}
+};
+
+#endif

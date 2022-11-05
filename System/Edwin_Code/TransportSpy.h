@@ -16,4 +16,6 @@ class TransportSpy : public TransportObserver {
         void notify(double num);
         Bank* getBankList();
         void setBankList(Bank* bank);
-}
+};
+
+#endif

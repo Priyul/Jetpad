@@ -24,5 +24,5 @@ Bank* TransportSpy::getBankList() {
 }
 
 void TransportSpy::setBankList(Bank* bank) {
-    BankList = bank
+    BankList = bank;
 }

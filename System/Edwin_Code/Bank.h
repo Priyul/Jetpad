@@ -10,4 +10,6 @@ class Bank {
         double get();
         void set(double num);
         void notifyBank(double num);
-}
+};
+
+#endif

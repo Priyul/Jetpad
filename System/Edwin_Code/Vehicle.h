@@ -9,7 +9,7 @@ class Vehicle : public Army {
 public:
     Vehicle();
     Vehicle(string type, double probability);
-    Vehicle(const Vehicle& vehicle)
+    Vehicle(const Vehicle& vehicle);
     ~Vehicle();
 
     string getRank();

@@ -9,282 +9,48 @@ void CountryBuilder :: buildName(string name) {
 }
 
 void CountryBuilder :: buildArmy() {
-
-    int firstInput = 2; //build army option selected
-    bool firstPass = false;
-
-    vector<Army*> returningArmy;
-    //this->country->buildArmy();
-    //this->country->
-    char buyMore;
-
-    ArmyFactory* soldierFactory = new SoldierFactory();
-    ArmyFactory* vehicleFactory = new VehicleFactory();
-
-    do{
-
-        if(this->country->getMoney() > 50){
-            int firstInput = chooseArmyType(); 
-            bool firstPass = false;
-
-            int secondInput;
-            bool secondPass = false;
-
-            while(!firstPass) {
-                switch (firstInput) {
-                    case 1:
-                        cout << "Soldier selected" << endl;
-                        secondInput = chooseSoldierRank();
-                        firstPass = true;
-                        break;
-                    case 2:
-                        cout << "Vehicle selected" << endl;
-                        secondInput = chooseVehicleType();
-                        firstPass = true;
-                        break;
-                    default:
-                        cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
-                        firstInput = chooseArmyType();
-                }
-            }
-
-            bool thirdPass = false;
-            int thirdInput;
-
-            string vehicleOrSoldier;
-
-            if(firstInput == 1){
-                thirdInput = buyMoreSoldiers(secondInput, "soldier");
-                vehicleOrSoldier = "soldier";
-            }else{
-                thirdInput = buyMoreSoldiers(secondInput, "vehicle");
-                vehicleOrSoldier = "vehicle";
-            }
-
-            while(!thirdPass){
-                if(thirdInput < 0){ //chose a negative number for soldier or vehicle size
-                    cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
-                    thirdInput = chooseArmySize(vehicleOrSoldier);
-                }else if(thirdInput == 0){ //chose zero for soldier or vehicle size
-                    if(vehicleOrSoldier == "soldier"){
-                        cout << "\033[7;31m" << "No soldiers were bought" << "\033[0m" << endl;
-                    }else{
-                        cout << "\033[7;31m" << "No vehicles were bought" << "\033[0m" << endl;
-                    }
-                    thirdPass = true;
-                }else{ //chose a positive value for soldier or vehicle size
-
-                    if(vehicleOrSoldier == "soldier"){
-                        if(secondInput == 1) { //rank is major
-                            double cost = thirdInput * 500;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add soldiers to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Soldier("Major", 0.5));
-                                }
-                                this->country->setMoney(this->country->getMoney() - cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        } else if(secondInput == 2)  { //rank is sergeant
-                            double cost = thirdInput * 100;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add soldiers to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Soldier("Sergeant", 0.5));
-                                }
-                                this->country->setMoney(this->country->getMoney() - cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        } else if(secondInput == 3) { //rank is private
-                            double cost = thirdInput * 50;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add soldiers to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Soldier("Private", 0.5));
-                                }
-                                this->country->setMoney(this->country->getMoney() - cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        }
-                    }else if(vehicleOrSoldier == "vehicle"){
-                        if(secondInput == 1) { //type is plane
-                            double cost = thirdInput * 10000;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add vehicles to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Vehicle("Plane", 0));
-                                }
-                                this->country->setMoney(this->country->getMoney()-cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Planes have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        } else if(secondInput == 2)  { //type is tank
-                            double cost = thirdInput * 10000;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add vehicles to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Vehicle("Tank", 0));
-                                }
-                                this->country->setMoney(this->country->getMoney() - cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Tanks have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        } else if(secondInput == 3) { //type is ship
-                            double cost = thirdInput * 10000;
-                            if(cost > this->country->getMoney()){ //not enough money for purchase
-                                cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
-                                thirdInput = chooseArmySize(vehicleOrSoldier);
-                            }else{ //add soldiers to army and subtract cost from money
-                                for(int i=0; i<thirdInput; i++){
-                                    this->country->army.push_back(new Vehicle("Ship", 0));
-                                }
-                                this->country->setMoney(this->country->getMoney() - cost);
-                                cout << endl;
-                                cout << "\033[1;32m" << "Ships have been added to your army!" << "\033[0m" << endl;
-                                cout << "Remaining money: " << this->country->getMoney() << endl; //testing
-                                thirdPass = true;
-                            }
-                        }
-                    }
-                    
-                }
-            }
-
-            cout << "\033[1;33m" << "Would you like to purchase more troops? [Y/N]" << "\033[0m" << endl;
-            cout << "select option: > ";
-            cin >> buyMore;
-        }else{
-            cout << "\033[7;31m" << "You do not have enough money to make more purchases of any kind" << "\033[0m" << endl;
-            buyMore = 'N';
-        }
-
-    }while(toupper(buyMore) == 'Y');
-    
-
-                 
-}
-
-int CountryBuilder :: chooseArmyType(){
-    int input;
-    cout << "\033[1;31m" << "Choose an army type:" << "\033[0m" << endl;
-    cout << "1. Build soldiers" << endl;
-    cout << "2. Build vehicles" << endl;
-    cout << "select option: > ";
-    cin >> input;
-    return input;
-}
-
-int CountryBuilder :: chooseSoldierRank(){
-    int input;
-    cout << "\033[1;31m" << "Choose soldier rank" << "\033[0m" << endl;
-    cout << "1. Major [R 500]" << endl;
-    cout << "2. Sergeant [R 100]" << endl;
-    cout << "3. Private [R 50]" << endl;
-    cout << "select option: > ";
-    cin >> input;
-    return input;
-}
-
-int CountryBuilder :: chooseVehicleType(){
-    int input;
-    cout << "\033[1;31m" << "Choose vehicle type" << "\033[0m" << endl;
-    cout << "1. Planes [R 10 000]" << endl;
-    cout << "2. Tanks [R 10 000]" << endl;
-    cout << "3. Ships [R 10 000]" << endl;
-    cout << "select option: > ";
-    cin >> input;
-    return input;
-}
-
-int CountryBuilder :: buyMoreSoldiers(int secondInput, string type){
-
-    int thirdInput;
-    bool secondPass = false;
-
-    if(type == "soldier"){
-        while(!secondPass){
-            switch (secondInput) {
-                case 1:
-                    cout << "Major selected" << endl;
-                    thirdInput = chooseArmySize("soldier");
-                    secondPass = true;
-                    break;
-                case 2:
-                    cout << "Sergeant selected" << endl;
-                    thirdInput = chooseArmySize("soldier");
-                    secondPass = true;
-                    break;
-                case 3:
-                    cout << "Private selected" << endl;
-                    thirdInput = chooseArmySize("soldier");
-                    secondPass = true;
-                    break;
-                default:
-                    cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
-                    secondInput = chooseSoldierRank();
-            }
-        }
-    }else if(type == "vehicle"){
-        while(!secondPass){
-            switch (secondInput) {
-                case 1:
-                    cout << "Plane selected" << endl;
-                    thirdInput = chooseArmySize("vehicle");
-                    secondPass = true;
-                    break;
-                case 2:
-                    cout << "Tank selected" << endl;
-                    thirdInput = chooseArmySize("vehicle");
-                    secondPass = true;
-                    break;
-                case 3:
-                    cout << "Ship selected" << endl;
-                    thirdInput = chooseArmySize("vehicle");
-                    secondPass = true;
-                    break;
-                default:
-                    cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
-                    secondInput = chooseSoldierRank();
-            }
-        }
+    cout << this->country->getMoney() << endl;
+  
+    if (this->country->getCountryName() == "United States of America") {
+        this->country->setArmy(20,20,35,10,50,20); 
+        cout << "Country has a name " << this->country->getCountryName() << endl;
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Russia") {
+        this->country->setArmy(10,40,10,20,40,15);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "China") {
+        this->country->setArmy(35,20,10,25,20,0);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "United Kingdom") {
+        this->country->setArmy(15,15,15,15,15,15);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Japan") {
+        this->country->setArmy(0,0,1,20,40,30);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Canada") {
+        this->country->setArmy(5,5,5,10,30,30);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Australia") {
+        this->country->setArmy(3,3,3,5,10,10);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Egypt") {
+        this->country->setArmy(0,5,2,5,5,5);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Iraq") {
+        this->country->setArmy(3,2,0,10,20,15);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "South Africa") {
+        this->country->setArmy(2,3,0,10,25,20);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Zimbabwe") {
+        this->country->setArmy(1,1,1,5,20,10);
+        //plane tank ship, major private sergeant
+    } else if (this->country->getCountryName() == "Nepal") {
+        this->country->setArmy(0,0,0,3,3,3);
+        //plane tank ship, major private sergeant
     }
 
-    return thirdInput;
-}
-
-int CountryBuilder :: chooseArmySize(string type){
-    int input;
-    if(type == "soldier"){
-        cout << "\033[1;31m" << "How many soldiers of this type would you like to make?" << "\033[0m" << endl;
-    }else{
-        cout << "\033[1;31m" << "How many vehicles of this type would you like to make?" << "\033[0m" << endl;
-    }
-    cout << "select option: > ";
-    cin >> input;
-    return input;
+    cout << endl << endl << "ARMY MADE" << endl << endl;
 }
 
 void CountryBuilder :: buildMoney(double money) {

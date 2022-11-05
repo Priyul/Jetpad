@@ -61,6 +61,7 @@ void StartOfWar::handleAction(Context* c){
     cout << "The country you have selected: " << countryNames[num] <<endl;
 
     //selected country goes to createCountry function
+    
     buildCountry(countryNames[num], countryMoney[num]); /**/
     
     //remove selected country from country vector
@@ -294,7 +295,7 @@ void StartOfWar::handleAction(Context* c){
 
 
 
-    //c->setState(new Action());
+    c->setState(new Action());
 
 }
 
@@ -302,9 +303,9 @@ string StartOfWar::getState(){
     return "(Start of the War)";
 }
 
-
 /*BUILDER INTEGRATION */
 void StartOfWar :: buildCountry(string countryName, double money) {
+    
     CountryBuilder* countryBuilder = new CountryBuilder();
     Director* countryDirector = new Director(countryBuilder);
     

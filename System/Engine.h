@@ -7,6 +7,8 @@
 
 #include "Country.h"
 
+#include "Bank.h"
+
 class Engine {
 
 public:
@@ -19,11 +21,27 @@ public:
     Country* P1SelectedCountry;
     Country* P2SelectedCountry;
 
-    vector<Country*> whichPlayerTurn();
+    Country* whichPlayerTurnCountry();
+    vector<Country*> whichPlayerTurnVector();
 
-private:
+    Country* whichNotPlayerTurnCountry();
+    vector<Country*> whichNotPlayerTurnVector();
+
+    Bank* bank;
+
+    void switchTurns();
+
+    string printCurrentPlayer();
+    string printNotCurrentPlayer();
+
     bool isP1Turn;
     bool isP2Turn;
+
+private:
+    // bool isP1Turn;
+    // bool isP2Turn;
+
+
 };
 
 #endif

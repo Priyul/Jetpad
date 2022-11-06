@@ -2,6 +2,7 @@
 #define TRANSPORTPHASE_H
 #include "State.h"
 #include "Engine.h"
+#include "Action.h"
 #include<iostream>
 #include<string>
 using namespace std;

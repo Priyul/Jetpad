@@ -4,5 +4,5 @@
 using namespace std;
 
 State::~State(){
-     cout<<"Delete State"<<endl;
+     //cout<<"Delete State"<<endl;
 }

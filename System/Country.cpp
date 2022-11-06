@@ -13,6 +13,7 @@
 #include "WarStrategy.h"
 #include "Attacking.h"
 
+
 using namespace std;
 
 
@@ -23,7 +24,8 @@ using namespace std;
 
 Country :: Country() {
     this->isMainCountry = false;
-    this->baseTransportRoute = new Route;
+
+    this->baseTransportRoute = new Route();
 }
 
 Country :: ~Country() {

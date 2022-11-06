@@ -7,7 +7,16 @@ using namespace std;
 
 class EndOfWar : public State {
     public:
+        /**
+         * @brief implements the end of war
+         * @param c
+         */
         virtual void handleAction(Context* c);
+
+        /**
+         * @brief gets the state
+         * @return string
+         */
         virtual string getState();
 };
 #endif

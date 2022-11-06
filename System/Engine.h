@@ -18,6 +18,12 @@ public:
 
     Country* P1SelectedCountry;
     Country* P2SelectedCountry;
+
+    vector<Country*> whichPlayerTurn();
+
+private:
+    bool isP1Turn;
+    bool isP2Turn;
 };
 
 #endif

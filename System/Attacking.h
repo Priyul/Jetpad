@@ -10,7 +10,7 @@
 class Attacking : public WarStrategy{
 public:
     Attacking();
-    void handle(vector<Army*> ourArmy, vector<Army*> AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy);
+    std::string handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend);
 };
 
 #endif

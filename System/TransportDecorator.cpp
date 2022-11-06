@@ -9,6 +9,7 @@ std::string TransportDecorator::getDescription() {
 }
 
 void TransportDecorator::setDescription(std::string description) {
+    std::cout << "transportdec setDescription called" << std::endl;
     return this->transport->setDescription(description);
 }
 

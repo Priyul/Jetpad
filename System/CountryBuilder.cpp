@@ -2,18 +2,16 @@
 
 CountryBuilder :: CountryBuilder() {
     this->country = new Country();
+    this->country->setCostOfCountry(0); //change according to values
 }
     
 void CountryBuilder :: buildName(string name) {
     this->country->setName(name);
 }
 
-void CountryBuilder :: buildArmy() {
-    cout << this->country->getMoney() << endl;
-  
+void CountryBuilder :: buildArmy() {  
     if (this->country->getCountryName() == "United States of America") {
         this->country->setArmy(20,20,35,10,50,20); 
-        cout << "Country has a name " << this->country->getCountryName() << endl;
         //plane tank ship, major private sergeant
     } else if (this->country->getCountryName() == "Russia") {
         this->country->setArmy(10,40,10,20,40,15);
@@ -49,8 +47,6 @@ void CountryBuilder :: buildArmy() {
         this->country->setArmy(0,0,0,3,3,3);
         //plane tank ship, major private sergeant
     }
-
-    //cout << endl << endl << "ARMY MADE" << endl << endl;
 }
 
 void CountryBuilder :: buildMoney(double money) {

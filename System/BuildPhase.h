@@ -10,8 +10,25 @@ using namespace std;
 
 class BuildPhase:public State{
     public:
+        /**
+         * @brief Construct a new Build Phase object
+         * 
+         * @param engine
+         * 
+         */
         BuildPhase(Engine* engine);
+
+        /**
+         * @brief build army and vehicles
+         * 
+         */
         virtual void handleAction(Context* c);
+
+        /**
+         * @brief Get the state object
+         * 
+         * @return string
+         */
         virtual string getState();
 
         Engine* engine;

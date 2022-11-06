@@ -5,8 +5,19 @@
 
 class SoldierFactory : public ArmyFactory {
 public:
+    /**
+     * @brief Constructor
+     * 
+     */
     SoldierFactory();
     //~SoldierFactory();
+    /**
+     * @brief Create Army and set its rank and probability
+     * 
+     * @param rank 
+     * @param probability 
+     * @return ** Army* 
+     */
     Army* create(string rank, double probability);
 };
 

@@ -18,7 +18,14 @@ public:
     /**
      * @brief Implement attacking strategy
      * 
-     * @param ourArmy, AIArmy, playerAttackStrategy, CPUDefenseStrategy, noOfAttackingVehiclesToSend , noOfAttackingMajorsToSend, noOfAttackingSergeantsToSend, noOfAttackingPrivatesToSend
+     * @param ourArmy
+     * @param AIArmy
+     * @param playerAttackStrategy
+     * @param CPUDefenseStrategy
+     * @param noOfAttackingVehiclesToSend
+     * @param noOfAttackingMajorsToSend
+     * @param noOfAttackingSergeantsToSend
+     * @param noOfAttackingPrivatesToSend
      * @return string
      * 
     */

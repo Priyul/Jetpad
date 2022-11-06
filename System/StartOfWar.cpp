@@ -149,8 +149,9 @@ void StartOfWar::handleAction(Context* c){
         cin >> AllyInput1;
 
         if (countriesVector[AllyInput1]->getCostOfCountry() > P1Country->getMoney()) {
-            while (countriesVector[AllyInput1]->getCostOfCountry() < P1Country->getMoney()) {
+            while (countriesVector[AllyInput1]->getCostOfCountry() > P1Country->getMoney()) {
                 cout << "\033[1;31m" <<  "Not enough money to buy ally, pick again" << "\033[0m" << endl;
+                cout <<  "select option: > ";
                 cin >> AllyInput1;
             } 
         } else {
@@ -178,8 +179,9 @@ void StartOfWar::handleAction(Context* c){
         cin >> AllyInput2;
 
         if (countriesVector[AllyInput2]->getCostOfCountry() > P2Country->getMoney()) {
-            while (countriesVector[AllyInput2]->getCostOfCountry() < P2Country->getMoney()) {
+            while (countriesVector[AllyInput2]->getCostOfCountry() > P2Country->getMoney()) {
                 cout << "\033[1;31m" <<  "Not enough money to buy ally, pick again" << "\033[0m" << endl;
+                cout <<  "select option: > ";
                 cin >> AllyInput2;
             } 
         } else {

@@ -56,6 +56,8 @@ public:
 
     Transport* baseTransportRoute;
 
+    string whichPlayer;
+
 
 protected:
 

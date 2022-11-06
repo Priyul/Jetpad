@@ -3,6 +3,8 @@
 #include "State.h"
 #include "Country.h"
 #include "Engine.h"
+#include "ChoosePlayerPhase.h"
+
 #include<iostream>
 #include<string>
 using namespace std;

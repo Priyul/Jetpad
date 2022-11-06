@@ -26,6 +26,7 @@ void TransportPhase::handleAction(Context* c)
         cout << "1. Short route [" << "\033[1;31m" << "Skip 1 turn" << "\033[0m" << " | " << "\033[1;32m" << "Get R 100 000" << "\033[0m" << "]" << endl;
         cout << "2. Medium route [" << "\033[1;31m" << "Skip 2 turns" << "\033[0m" << " | " << "\033[1;32m" << "Get R 500 000" << "\033[0m" << "]" << endl;
         cout << "3. Long route [" << "\033[1;31m" << "Skip 3 turns" << "\033[0m" << " | " << "\033[1;32m" << "Get R 1 500 000" << "\033[0m" << "]" << endl;
+        cout << "select option: > ";
         cin >> input;
 
         if(input != 1 && input != 2 && input != 3){
@@ -39,17 +40,29 @@ void TransportPhase::handleAction(Context* c)
     if(input == 1){
         Transport* shortRoute = new ShortRoute(this->engine->P1SelectedCountry->baseTransportRoute);
         cout << shortRoute->getDescription() << endl;
-        cout << "Amount: " << shortRoute->getMoneyGained() << endl;
+        int moneyGained = shortRoute->getMoneyGained();
+        cout << "Amount: " << moneyGained << endl;
+
+        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+
         cout << "Number of turns to skip: " << shortRoute->getTurnsToSkip() << endl; //so to use the skip turn feature, we iterate through the array of 6 countries and call this method for each country. If the method returns a value greater than 0, the next player will play their turn
     }else if(input == 2){
         Transport* mediumRoute = new MediumRoute(this->engine->P1SelectedCountry->baseTransportRoute);
         cout << mediumRoute->getDescription() << endl;
-        cout << "Amount: " << mediumRoute->getMoneyGained() << endl;
+        int moneyGained = mediumRoute->getMoneyGained();
+        cout << "Amount: " << moneyGained << endl;
+
+        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+
         cout << "Number of turns to skip: " << mediumRoute->getTurnsToSkip() << endl;
     }else if(input == 3){
         Transport* longRoute = new LongRoute(this->engine->P1SelectedCountry->baseTransportRoute);
         cout << longRoute->getDescription() << endl;
-        cout << "Amount: " << longRoute->getMoneyGained() << endl;
+        int moneyGained = longRoute->getMoneyGained();
+        cout << "Amount: " << moneyGained << endl;
+
+        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+
         cout << "Number of turns to skip: " << longRoute->getTurnsToSkip() << endl;
     }
 
@@ -72,6 +85,7 @@ void TransportPhase::handleAction(Context* c)
     // {
     //      c->setState(new DefendPhase(this->engine));
     // }
+    c->setState(new Action(this->engine));
 
 }
 

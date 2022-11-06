@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+#include "Bank.h"
 class Context;
+
 
 class State{
     public:

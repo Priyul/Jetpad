@@ -23,9 +23,9 @@ int chooseArmyType(){
 int chooseSoldierRank(){
     int input;
     cout << "\033[1;31m" << "Choose soldier rank" << "\033[0m" << endl;
-    cout << "1. Major [R 500]" << endl;
-    cout << "2. Sergeant [R 100]" << endl;
-    cout << "3. Private [R 50]" << endl;
+    cout << "1. Major [R 50 000]" << endl;
+    cout << "2. Sergeant [R 30 000]" << endl;
+    cout << "3. Private [R 20 000]" << endl;
     cout << "select option: > ";
     cin >> input;
     return input;
@@ -34,9 +34,9 @@ int chooseSoldierRank(){
 int chooseVehicleType(){
     int input;
     cout << "\033[1;31m" << "Choose vehicle type" << "\033[0m" << endl;
-    cout << "1. Planes [R 10 000]" << endl;
-    cout << "2. Tanks [R 10 000]" << endl;
-    cout << "3. Ships [R 10 000]" << endl;
+    cout << "1. Planes [R 200 000]" << endl;
+    cout << "2. Tanks [R 200 000]" << endl;
+    cout << "3. Ships [R 200 000]" << endl;
     cout << "select option: > ";
     cin >> input;
     return input;
@@ -123,7 +123,7 @@ void BuildPhase::handleAction(Context* c)
     ArmyFactory* vehicleFactory = new VehicleFactory();
 
     do{
-        if(this->engine->P1SelectedCountry->getMoney() > 50){
+        if(this->engine->P1SelectedCountry->getMoney() > 20000){
             int firstInput = chooseArmyType(); 
             bool firstPass = false;
 
@@ -176,7 +176,7 @@ void BuildPhase::handleAction(Context* c)
 
                     if(vehicleOrSoldier == "soldier"){
                         if(secondInput == 1) { //rank is major
-                            double cost = thirdInput * 500;
+                            double cost = thirdInput * 50000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -193,7 +193,7 @@ void BuildPhase::handleAction(Context* c)
                                 thirdPass = true;
                             }
                         } else if(secondInput == 2)  { //rank is sergeant
-                            double cost = thirdInput * 100;
+                            double cost = thirdInput * 30000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -210,7 +210,7 @@ void BuildPhase::handleAction(Context* c)
                                 thirdPass = true;
                             }
                         } else if(secondInput == 3) { //rank is private
-                            double cost = thirdInput * 50;
+                            double cost = thirdInput * 20000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -229,7 +229,7 @@ void BuildPhase::handleAction(Context* c)
                         }
                     }else if(vehicleOrSoldier == "vehicle"){
                         if(secondInput == 1) { //type is plane
-                            double cost = thirdInput * 10000;
+                            double cost = thirdInput * 250000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -246,7 +246,7 @@ void BuildPhase::handleAction(Context* c)
                                 thirdPass = true;
                             }
                         } else if(secondInput == 2)  { //type is tank
-                            double cost = thirdInput * 10000;
+                            double cost = thirdInput * 250000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
@@ -263,7 +263,7 @@ void BuildPhase::handleAction(Context* c)
                                 thirdPass = true;
                             }
                         } else if(secondInput == 3) { //type is ship
-                            double cost = thirdInput * 10000;
+                            double cost = thirdInput * 250000;
                             if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);

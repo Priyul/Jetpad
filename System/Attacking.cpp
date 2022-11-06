@@ -1291,4 +1291,5 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
             return "Player 1 won the attack!";
         }
     }
+    return "Error occured";
 }

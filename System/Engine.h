@@ -29,6 +29,10 @@ public:
 
     Bank* bank;
 
+    /**
+     * @brief 
+     * 
+     */
     void switchTurns();
 
     string printCurrentPlayer();

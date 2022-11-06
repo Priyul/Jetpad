@@ -1,5 +1,5 @@
 a: *.cpp
-	g++ *.cpp -o main
+	g++ -std=c++17 *.cpp -o main
 
 run:
 	./main

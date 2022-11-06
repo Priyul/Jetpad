@@ -6,7 +6,16 @@
 
 class ArmyFactory  {
     public:
+        /**
+         * @brief Construct a new Army Factory object
+         * 
+         */
         ArmyFactory();
+
+        /**
+         * @brief Destroy the Army Factory object
+         * 
+        */
         ~ArmyFactory();
 
         /**
@@ -20,7 +29,7 @@ class ArmyFactory  {
         virtual Army* create(string type, double probability) = 0;
 
     protected:
-        int strategy; //howzit
+        int strategy; 
         int totalTroops;
 };
 #endif

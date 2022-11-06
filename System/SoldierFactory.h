@@ -12,7 +12,7 @@ public:
     SoldierFactory();
     //~SoldierFactory();
     /**
-     * @brief Create Army and set its rank and probability
+     * @brief Create object of type soldier
      * 
      * @param rank 
      * @param probability 

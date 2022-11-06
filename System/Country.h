@@ -14,6 +14,8 @@ using namespace std;
 #include "Soldier.h"
 #include "Vehicle.h"
 
+#include "Route.h"
+
 using namespace std;
 
 class Country {
@@ -26,9 +28,8 @@ public:
     double getMoney();
 
     vector<Army*> army; //move to private eventually
-    void buildArmy();
+    // void buildArmy();
     void showArmy();
-    vector<Army*> attack();
     vector<Army*> getArmy();
     void setArmy(int numPlanes, int numTanks, int numShips, int numMajors, int numPrivates, int numSergeants);
 
@@ -37,6 +38,8 @@ public:
 
     void setName(string name);
     void setMoney(double money);
+    void setCostOfCountry(double cost);
+    double getCostOfCountry();
 
     void setSoldierFactory(ArmyFactory* soldierFactory);
     void setVehicleFactory(ArmyFactory* vehicleFactory);
@@ -49,7 +52,11 @@ public:
     int numberOfPlanes;
     int numberOfShips;
 
-    
+    bool isMainCountry; //i only added this
+
+    Transport* baseTransportRoute;
+
+
 protected:
 
 
@@ -60,6 +67,8 @@ private:
 
     ArmyFactory* soldierFactory;
     ArmyFactory* vehicleFactory;
+
+    double costOfCountry;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef BUILDPHASE_H
 #define BUILDPHASE_H
 #include "State.h"
+#include "Engine.h"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -9,8 +10,11 @@ using namespace std;
 
 class BuildPhase:public State{
     public:
+        BuildPhase(Engine* engine);
         virtual void handleAction(Context* c);
         virtual string getState();
+
+        Engine* engine;
 
 };
 #endif

@@ -3,6 +3,8 @@
 #include "State.h"
 //#include "Country.h"
 // #include "Context.h"
+#include "Engine.h"
+
 #include<iostream>
 #include<string>
 
@@ -26,8 +28,8 @@ public:
 
     /* BUILDER INTEGRATION */
     CountryBuilder* countryBuilder;
-    void buildCountry(string countryName, double money);
-    Country* buildAllyCountry(string countryName, double money);
+    //void buildCountry(string countryName, double money);
+    Country* buildCountry(string countryName, double money);
 
     Country* getmyCountry();
     Country* getAllyCountry();

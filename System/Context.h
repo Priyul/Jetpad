@@ -12,10 +12,38 @@ class Context{
     private:
         State* state;
     public:
+        /**
+         * @brief Construct a new Context object
+         * 
+         */
         Context();
+
+        /**
+         * @brief Destroy context object
+         * 
+         * 
+         */
         ~Context();
+
+        /**
+         * @brief change state
+         * 
+         * 
+         */
         void change();
+
+        /**
+         * @brief get state
+         * 
+         * @return string
+         */
         string getState();
+
+        /**
+         * @brief set state
+         * 
+         * @param s
+         */
         void setState(State* s);
 };
 #endif

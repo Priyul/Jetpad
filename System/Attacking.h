@@ -9,6 +9,10 @@
 
 class Attacking : public WarStrategy{
 public:
+    /**
+     * @brief Construct a new Attacking object
+     * 
+     */
     Attacking();
 
     /**

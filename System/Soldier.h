@@ -53,7 +53,7 @@ public:
     string getType();
 
     /**
-     * @brief 
+     * @brief Clone the Army
      * 
      * @return ** Army* 
      */

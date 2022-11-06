@@ -6,7 +6,10 @@
 
 class Bank {
 public:
-
+    /**
+     * @brief Transfers money from one country to another
+     * 
+     */
     void sendMoney(Country* c, double moneyToSend);
 };
 

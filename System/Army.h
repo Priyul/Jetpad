@@ -34,6 +34,10 @@ public:
     */
     virtual void setProbability(double p) = 0;
 
+    /**
+     * @brief clone soldiers and vehicles
+     * 
+    */
     virtual Army* clone() = 0;
 };
 

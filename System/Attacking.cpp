@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <random>
 #include <ctime>
+#include <algorithm>
 
 Attacking::Attacking(){
     //  std::cout << "Attacking constructor called" << endl;

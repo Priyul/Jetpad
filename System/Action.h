@@ -9,9 +9,29 @@ using namespace std;
 
 class Action: public State{
     public:
+
+        /**
+         * @brief Construct a new Action object
+         * 
+         * @param engine
+        */
+
         Action(Engine* engine);
+
+        /**
+         * @brief Implement attacking strategy
+         * 
+         * @param c
+        */
         virtual void handleAction(Context* c);
+
+
+        /**
+         * @brief get the state
+         * 
+        */
         virtual string getState();
+       
 
         Engine* engine;
         //Engine* getEngine();

@@ -5,14 +5,14 @@
 | Name | Email |
 | ----------- | ----------- |
 | Ashir Butt | u20422475@tuks.co.za |
-| Jaimen Govender | @tuks.co.za |
+| Jaimen Govender | u20464348@tuks.co.za |
 | Priyul Mahabeer | u20421169@tuks.co.za |
 | Tianyou Huang | u20660546@tuks.co.za |
 | Sen-Hong Chang | u20424575@tuks.co.za |
-| Dash | @tuks.co.za |
+| Dharshan Pillay | @tuks.co.za |
 
 
-## How to compile the system
+## How to compile the program
 
 1. Open Terminal in the SYSTEM folder
 2. make

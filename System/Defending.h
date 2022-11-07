@@ -1,5 +1,5 @@
-#ifndef ATTACKING_H
-#define ATTACKING_H
+#ifndef DEFENDING_H
+#define DEFENDING_H
 
 #include "WarStrategy.h"
 
@@ -10,15 +10,15 @@
 #include "Country.h"
 // #include "Engine.h"
 
-class Attacking : public WarStrategy{
+class Defending : public WarStrategy{
 public:
     /**
-     * @brief Construct a new Attacking object
+     * @brief Construct a new Defending object
      * 
      */
-    Attacking();
+    Defending();
 
-     /** @brief Implement attacking strategy
+     /** @brief Implement defending strategy
      * 
      * @param ourArmy
      * @param AIArmy

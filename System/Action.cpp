@@ -18,7 +18,7 @@ int playerTurn(Engine* engine){
     Country* currentCountry = engine->whichPlayerTurnCountry();
 
     vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
-
+    cout << "currr army size: " << currentCountry->army.size() << endl;
     cout << "\033[1;32m" << engine->printCurrentPlayer() << " army: (" << currentCountry->getCountryName() << ")" << "\033[0m";
     currentCountry->showArmy();
     cout << fixed;
@@ -41,7 +41,22 @@ void Action::handleAction(Context* c){
     cout << "Went into action" << endl;
     bool doCheck = true;
 
+    Country* currentCountry = engine->whichPlayerTurnCountry();
+
+    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
+
+
      ///IMPORTANT NOTE - To make the while loop of the action state terminate, set firstpass = true AND doCheck = false
+
+    for (int i = 0; i < currentCountryVector.size(); i++) {
+        
+        if (currentCountryVector[i]->getTurnsToSkip() > 0) {
+            currentCountryVector[i]->setTurnsToSkip(currentCountryVector[i]->getTurnsToSkip()-1);
+            engine->switchTurns();
+            cout << "Inside if statement, turns to skip: " << currentCountryVector[i]->getTurnsToSkip() << endl;
+            c->setState(new Action(this->engine));
+        }
+    }
 
     while(doCheck) {
         int firstInput = playerTurn(this->engine);
@@ -80,7 +95,7 @@ void Action::handleAction(Context* c){
         }
     }
 
-    engine->P1SelectedCountry->showArmy();
+    currentCountry->showArmy();
 
 }
 

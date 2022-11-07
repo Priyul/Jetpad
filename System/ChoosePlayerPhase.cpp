@@ -12,18 +12,29 @@ void ChoosePlayerPhase::handleAction(Context* c){
     Country* currentCountry = this->engine->whichPlayerTurnCountry();
     vector<Country*> currentCountryVector = this->engine->whichPlayerTurnVector();
     
-    
-    cout << "\033[1;31m" << this->engine->printCurrentPlayer() << " select which country to perform an action with:" << "\033[0m" << endl;
-    for (int i = 0; i < currentCountryVector.size(); i++) {
-        if(currentCountryVector[i]->isMainCountry == true){
-            cout << i << " ==> " << currentCountryVector[i]->getCountryName() << " (Main country) " << endl;
-        }else{
-            cout << i << " ==> " << currentCountryVector[i]->getCountryName() << endl;
+    int count = 0;
+    for (int i = 0; i < currentCountryVector.size() ; i++) {
+        if (currentCountryVector[i]->hasLost == false) {
+            count++;
         }
     }
 
-    cout << "Select option: > ";
-    cin >> input;
+    input = -1;
+    while ((input < 0) || (input > count)) { 
+        cout << "\033[1;31m" << this->engine->printCurrentPlayer() << " select which country to perform an action with:" << "\033[0m" << endl;
+        for (int i = 0; i < currentCountryVector.size(); i++) {
+            if (currentCountryVector[i]->hasLost == false) {
+                if(currentCountryVector[i]->isMainCountry == true){
+                    cout << i << " ==> " << currentCountryVector[i]->getCountryName() << " (Main country) " << endl;
+                }else{
+                    cout << i << " ==> " << currentCountryVector[i]->getCountryName() << endl;
+                }
+            }
+        }
+
+        cout << "Select option: > ";
+        cin >> input;
+    }
 
     if (engine->isP1Turn) {
         engine->P1SelectedCountry = currentCountryVector[input];

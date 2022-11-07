@@ -12,10 +12,11 @@ public:
     virtual void setMoneyGained(double money) = 0;
     virtual void setTurnsToSkip(int turns) = 0;
     virtual int getTurnsToSkip() = 0;
+
+    int turnsToSkip;
 protected:
     double moneyGained;
     std::string routeDescription;
-    int turnsToSkip;
 };
 
 

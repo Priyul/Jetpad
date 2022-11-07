@@ -10,9 +10,20 @@ using namespace std;
 class Action: public State{
     public:
         Action(Engine* engine);
-        virtual void handleAction(Context* c);
-        virtual string getState();
 
+        /**
+         * @brief handle action
+         * 
+         * @param c 
+         */
+        virtual void handleAction(Context* c);
+
+        /**
+         * @brief Get the State object
+         * 
+         * @return string 
+         */
+        virtual string getState();
         Engine* engine;
         //Engine* getEngine();
     

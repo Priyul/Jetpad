@@ -26,5 +26,6 @@ void MediumRoute::setTurnsToSkip(int turns){
 
 int MediumRoute::getTurnsToSkip(){
     this->setTurnsToSkip(2);
+    this->turnsToSkip = 2;
     return TransportDecorator::getTurnsToSkip();
 }

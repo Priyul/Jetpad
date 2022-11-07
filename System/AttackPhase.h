@@ -4,6 +4,7 @@
 #include "Country.h"
 #include "Engine.h"
 #include "ChoosePlayerPhase.h"
+#include "EndOfWar.h"
 
 #include<iostream>
 #include<string>

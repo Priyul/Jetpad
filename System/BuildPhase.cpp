@@ -113,17 +113,23 @@ int buyMoreSoldiers(int secondInput, string type){
 
 void BuildPhase::handleAction(Context* c)
 {
+    
+    // cout<<"BuildPhase in"<<endl;
+    // // int firstInput = 2; //build army option selected
+    // // bool firstPass = false;
+    Country* currentCountry = engine->whichPlayerTurnCountry();
+    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
 
-    cout<<"BuildPhase in"<<endl;
-    // int firstInput = 2; //build army option selected
-    // bool firstPass = false;
+    Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
+    vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
+
     char buyMore;
 
     ArmyFactory* soldierFactory = new SoldierFactory();
     ArmyFactory* vehicleFactory = new VehicleFactory();
 
     do{
-        if(this->engine->P1SelectedCountry->getMoney() > 20000){
+        if(currentCountry->getMoney() > 20000){
             int firstInput = chooseArmyType(); 
             bool firstPass = false;
 
@@ -177,106 +183,106 @@ void BuildPhase::handleAction(Context* c)
                     if(vehicleOrSoldier == "soldier"){
                         if(secondInput == 1) { //rank is major
                             double cost = thirdInput * 50000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add soldiers to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Soldier("Major", 0.5));
+                                    currentCountry->army.push_back(new Soldier("Major", 0.5));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney() - cost);
+                                currentCountry->setMoney(currentCountry->getMoney() - cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         } else if(secondInput == 2)  { //rank is sergeant
                             double cost = thirdInput * 30000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add soldiers to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Soldier("Sergeant", 0.5));
+                                    currentCountry->army.push_back(new Soldier("Sergeant", 0.5));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney() - cost);
+                                currentCountry->setMoney(currentCountry->getMoney() - cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         } else if(secondInput == 3) { //rank is private
                             double cost = thirdInput * 20000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add soldiers to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Soldier("Private", 0.5));
+                                    currentCountry->army.push_back(new Soldier("Private", 0.5));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney() - cost);
+                                currentCountry->setMoney(currentCountry->getMoney() - cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Soldiers have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         }
                     }else if(vehicleOrSoldier == "vehicle"){
                         if(secondInput == 1) { //type is plane
-                            double cost = thirdInput * 250000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            double cost = thirdInput * 200000;
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add vehicles to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Vehicle("Plane", 0));
+                                    currentCountry->army.push_back(new Vehicle("Plane", 0));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney()-cost);
+                                currentCountry->setMoney(currentCountry->getMoney()-cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Planes have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         } else if(secondInput == 2)  { //type is tank
-                            double cost = thirdInput * 250000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            double cost = thirdInput * 200000;
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add vehicles to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Vehicle("Tank", 0));
+                                    currentCountry->army.push_back(new Vehicle("Tank", 0));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney() - cost);
+                                currentCountry->setMoney(currentCountry->getMoney() - cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Tanks have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         } else if(secondInput == 3) { //type is ship
-                            double cost = thirdInput * 250000;
-                            if(cost > this->engine->P1SelectedCountry->getMoney()){ //not enough money for purchase
+                            double cost = thirdInput * 200000;
+                            if(cost > currentCountry->getMoney()){ //not enough money for purchase
                                 cout << "\033[7;31m" << "You do not have enough money to make this purchase. Try again!" << "\033[0m" << endl;
                                 thirdInput = chooseArmySize(vehicleOrSoldier);
                             }else{ //add soldiers to army and subtract cost from money
                                 for(int i=0; i<thirdInput; i++){
-                                    this->engine->P1SelectedCountry->army.push_back(new Vehicle("Ship", 0));
+                                    currentCountry->army.push_back(new Vehicle("Ship", 0));
                                 }
-                                this->engine->P1SelectedCountry->setMoney(this->engine->P1SelectedCountry->getMoney() - cost);
+                                currentCountry->setMoney(currentCountry->getMoney() - cost);
                                 cout << endl;
                                 cout << "\033[1;32m" << "Ships have been added to your army!" << "\033[0m" << endl;
                                 cout << fixed;
                                 cout << setprecision(2);
-                                cout << "Remaining money: " << this->engine->P1SelectedCountry->getMoney() << endl; //testing
+                                cout << "Remaining money: " << currentCountry->getMoney() << endl; //testing
                                 thirdPass = true;
                             }
                         }

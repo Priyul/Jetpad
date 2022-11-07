@@ -12,6 +12,8 @@ public:
     void setMoneyGained(double money);
     void setTurnsToSkip(int turns);
     int getTurnsToSkip();
+
+    int turnsToSkip;
 };
 
 

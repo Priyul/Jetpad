@@ -19,11 +19,19 @@ double randomNumber(double prob)
         return 0;     
 }
 
-string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend){
+string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend, Engine* engine){
     srand(time(NULL));
 
-    cout << "\033[1;32m" << "Player 1 is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
-    cout << "\033[1;31m" << "Player 2 is using defense strategy: " << "\033[1;33m" << CPUDefenseStrategy << "\033[0m" << endl;
+    Country* currentCountry = engine->whichPlayerTurnCountry();
+    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
+
+    Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
+    vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
+
+    cout << "\033[1;32m" << currentCountry->whichPlayer << " is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
+
+    cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " is using defense strategy: " << "\033[1;33m" << CPUDefenseStrategy << "\033[0m" << endl;
+ 
 
     string attackVehicleChosen;
     string defenseVehicleChosen;
@@ -578,14 +586,14 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
     //print vehicle fight results
     cout << endl;
-    cout << "\033[1;32m" << "Player 1's attacking " << attackVehicleChosen << "s remaining: " << noOfAttackingVehiclesToSend << "\033[0m" << endl; 
+    cout << "\033[1;32m" << currentCountry->whichPlayer << "'s attacking " << attackVehicleChosen << "s remaining: " << noOfAttackingVehiclesToSend << "\033[0m" << endl; 
 
     if(CPUDefenseStrategy == "LandDefense"){
-        cout << "\033[1;31m" << "Player 2's defending Tanks remaining: " << numberOfDefendingTanks << "\033[0m" << endl; 
+        cout << "\033[1;31m" << notCurrentCountry->whichPlayer << "'s defending Tanks remaining: " << numberOfDefendingTanks << "\033[0m" << endl; 
     }else if(CPUDefenseStrategy == "AirDefense"){
-        cout << "\033[1;31m" << "Player 2's defending Planes remaining: " << numberOfDefendingPlanes << "\033[0m" << endl; 
+        cout << "\033[1;31m" << notCurrentCountry->whichPlayer << "'s defending Planes remaining: " << numberOfDefendingPlanes << "\033[0m" << endl; 
     }else if(CPUDefenseStrategy == "SeaDefense"){
-        cout << "\033[1;31m" << "Player 2's defending Ships remaining: " << numberOfDefendingShips << "\033[0m" << endl; 
+        cout << "\033[1;31m" << notCurrentCountry->whichPlayer << "'s defending Ships remaining: " << numberOfDefendingShips << "\033[0m" << endl; 
     }
 
 
@@ -772,8 +780,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
     //print soldier fight results
     cout << endl;
-    cout << "\033[1;32m" << "Player 1's attacking troops remaining: " << noOfAttackingMajorsToSend + noOfAttackingSergeantsToSend + noOfAttackingPrivatesToSend << "\033[0m" << endl; 
-    cout << "\033[1;31m" << "Player 2's defending troops remaining: " << numberOfDefendingSoldiers << "\033[0m" << endl << endl; 
+    cout << "\033[1;32m" << currentCountry->whichPlayer << "'s attacking troops remaining: " << noOfAttackingMajorsToSend + noOfAttackingSergeantsToSend + noOfAttackingPrivatesToSend << "\033[0m" << endl; 
+    cout << "\033[1;31m" << notCurrentCountry->whichPlayer << "'s defending troops remaining: " << numberOfDefendingSoldiers << "\033[0m" << endl << endl; 
 
 
     //final check: make them fight the opposite type. eg: soldier vs vehicle or vehicle vs soldier
@@ -781,8 +789,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
     if(totalAttackSoldiersSent == 0){
         if(noOfAttackingVehiclesToSend == 0){
-            cout << "\033[7;32m" << "Player 2 won defense! clean sweep!" << "\033[0m" << endl;
-            return "Player 2 won the defense!";
+            cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense! clean sweep!" << "\033[0m" << endl;
+            return notCurrentCountry->whichPlayer + " won the defense!";
         }else{
             //make attacker remaining vehicles fight with defenders remaining troops
 
@@ -804,8 +812,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                         }
                     }
 
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining vehicles!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
 
                 }else{
                     
@@ -849,8 +857,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingVehiclesToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining troops!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining troops!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
 
 
                 }
@@ -871,8 +879,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                         }
                     }
 
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining vehicles!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
 
                 }else{
                     
@@ -916,8 +924,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingVehiclesToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining troops!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining troops!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
 
                 }
             }else if(playerAttackStrategy == "SeaAttack"){
@@ -938,8 +946,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                         }
                     }
 
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining vehicles!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
 
                 }else{
                     
@@ -983,8 +991,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingVehiclesToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining troops!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining troops!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
 
                 }
             }
@@ -1044,8 +1052,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingSergeantsToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining vehicles!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
 
                 }else{
                     //attackers won. remove the defending vehicles from defenders army
@@ -1088,8 +1096,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             numberOfDefendingShips--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining troops!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining troops!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
 
                 }
             }else if(CPUDefenseStrategy == "AirDefense"){
@@ -1142,8 +1150,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingSergeantsToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining vehicles!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
                 }else{
                     //attackers won. remove the defending vehicles from defenders army
                     int tempCount = 0;
@@ -1185,8 +1193,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             numberOfDefendingShips--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining troops!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining troops!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
                 }
             }else if(CPUDefenseStrategy == "SeaDefense"){
                 if((numberOfDefendingTanks * 20) >= totalAttackSoldiersSent){
@@ -1238,8 +1246,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             noOfAttackingSergeantsToSend--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 2 won defense with remaining vehicles!" << "\033[0m" << endl;
-                    return "Player 2 won the defense!";
+                    cout << "\033[7;32m" << notCurrentCountry->whichPlayer << " won defense with remaining vehicles!" << "\033[0m" << endl;
+                    return notCurrentCountry->whichPlayer + " won the defense!";
                 }else{
                     //attackers won. remove the defending vehicles from defenders army
                     int tempCount = 0;
@@ -1281,14 +1289,14 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                             numberOfDefendingShips--;
                         }
                     }
-                    cout << "\033[7;32m" << "Player 1 won attack with remaining troops!" << "\033[0m" << endl;
-                    return "Player 1 won the attack!";
+                    cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack with remaining troops!" << "\033[0m" << endl;
+                    return currentCountry->whichPlayer + " won the attack!";
                 }
             }
 
         }else{
-            cout << "\033[7;32m" << "Player 1 won attack! clean sweep!" << "\033[0m" << endl;
-            return "Player 1 won the attack!";
+            cout << "\033[7;32m" << currentCountry->whichPlayer << " won attack! clean sweep!" << "\033[0m" << endl;
+            return currentCountry->whichPlayer + " won the attack!";
         }
     }
     return "Error occured";

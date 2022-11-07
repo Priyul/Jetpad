@@ -53,7 +53,7 @@ Can be found in [UML State](https://drive.google.com/drive/u/0/folders/1R5EW7jJy
 [Function Report](https://drive.google.com/drive/u/0/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0)
 
 ### Research Report
-[Research Report](https://drive.google.com/drive/u/0/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf)
+[Research Report](https://docs.google.com/document/d/1Y1N3nx0n_V4Sd0Gu92M-i6i0nZr_izTzkrEK23Mfl6M/edit)
 
 ### Video Demonstration
 [Video](https://drive.google.com/drive/u/0/folders/1zwu0cwJ5NiCZY4GkjCm1dfxItaCthhxX)

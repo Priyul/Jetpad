@@ -85,6 +85,7 @@ void AttackPhase::handleAction(Context* c)
 
     //MAKE AI CHOOSE A DEFENSE:
     srand(time(0));  // Initialize random number generator.
+    CPUDefenseChoice = 0;
 
     while(CPUDefenseChoice != 1 && CPUDefenseChoice != 2 && CPUDefenseChoice != 3){
         cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " Choose a defense strategy" << "\033[0m" << endl;
@@ -237,7 +238,7 @@ void AttackPhase::handleAction(Context* c)
     } 
 
     cout << endl;
-    cout << "before attack" << endl << endl;
+
     cout << "\033[1;32m" << "Player 1 army before the attack (" << currentCountry->getCountryName() << ")" << "\033[0m";
     p1ArmyBeforeAttack->showArmy();
     cout << endl;
@@ -246,9 +247,6 @@ void AttackPhase::handleAction(Context* c)
     p2ArmyBeforeAttack->showArmy();
     cout << endl;
 
-
-
-    cout << "after attack" << endl << endl;
     cout << "\033[1;32m" << "Player 1 army after the attack (" << currentCountry->getCountryName() << ")" << "\033[0m";
     currentCountry->showArmy();
     cout << endl;
@@ -295,8 +293,6 @@ void AttackPhase::handleAction(Context* c)
                
             auto it = find(notCurrentCountryVector.begin(), notCurrentCountryVector.end(), notCurrentCountry);
             if(it != notCurrentCountryVector.end()){
-                cout << "he got removed" << endl << endl;
-
                 notCurrentCountryVector.erase(it);
          
                 if (this->engine->isP1Turn == true) {

@@ -20,11 +20,29 @@ using namespace std;
 
 class Country {
 public:
+    /**
+     * @brief Construct a new Country object
+    */
     Country();
     //Country(string name, double money); we dont need this anymore because the builder sorts everything out
+
+    /**
+     * @brief destroy a Country object
+    */
     ~Country();
 
+    /**
+     * @brief Get the Name of the country object
+     * 
+     * @return string 
+    */
     string getCountryName();
+
+    /**
+     * @brief Get the Money of the country object
+     * 
+     * @return double 
+    */
     double getMoney();
 
     vector<Army*> army; //move to private eventually
@@ -50,9 +68,19 @@ public:
      */
     void setArmy(int numPlanes, int numTanks, int numShips, int numMajors, int numPrivates, int numSergeants);
 
+    /**
+     * @brief set number of troops foreach country
+     * 
+     * @param ourArmy 
+     */
     void countNumberOfIndividualTroops(vector<Army*> ourArmy);
     // void soldierInput(int input);
 
+    /**
+     * @brief set the name of the country
+     * 
+     * @param name 
+     */
     void setName(string name);
     /**
      * @brief Set the Money variable

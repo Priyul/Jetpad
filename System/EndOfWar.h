@@ -8,8 +8,15 @@ using namespace std;
 
 class EndOfWar : public State {
     public:
+
         EndOfWar(Engine* engine);
+
         virtual void handleAction(Context* c);
+
+        /**
+         * @brief gets the state
+         * @return string
+         */
         virtual string getState();
     
     private:

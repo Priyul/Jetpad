@@ -12,9 +12,27 @@
 
 class Attacking : public WarStrategy{
 public:
+    /**
+     * @brief Construct a new Attacking object
+     * 
+     */
     Attacking();
 
-    std::string handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend, Engine* engine);
+    /**
+     * @brief Implement attacking strategy
+     * 
+     * @param ourArmy
+     * @param AIArmy
+     * @param playerAttackStrategy
+     * @param CPUDefenseStrategy
+     * @param noOfAttackingVehiclesToSend
+     * @param noOfAttackingMajorsToSend
+     * @param noOfAttackingSergeantsToSend
+     * @param noOfAttackingPrivatesToSend
+     * @return string
+     * 
+    */
+    std::string handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend);
 };
 
 #endif

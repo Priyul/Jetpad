@@ -37,7 +37,7 @@ Can be found in [UML Class](https://drive.google.com/drive/u/0/folders/1iLaN0yRB
 ### Activity Diagram
 Can be found in [UML Activity](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)<br />
 ### Communication Diagram
-Can be found in [UML Communication]](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)<br />
+Can be found in [UML Communication](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)<br />
 ### Object Diagram
 Can be found in [UML Object](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)<br />
 ### Sequence Diagram

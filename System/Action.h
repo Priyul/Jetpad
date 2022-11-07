@@ -18,10 +18,10 @@ class Action: public State{
         Action(Engine* engine);
 
         /**
-         * @brief Implement attacking strategy
+         * @brief handle action
          * 
-         * @param c
-        */
+         * @param c 
+         */
         virtual void handleAction(Context* c);
 
         /**

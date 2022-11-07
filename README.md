@@ -19,7 +19,7 @@
 3. make run
 
 ## UML Diagrams
-[Class Diagram](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp)
+[Class Diagram](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp);
 [Activity Diagram](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)
 [Communication Diagram](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)
 [Object Diagram](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)

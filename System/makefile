@@ -9,3 +9,6 @@ clean:
 
 tar:
 	tar -cvz *.cpp makefile -f JETPAD.tar
+
+make:
+	make CXX="cpptestscan g++" CC="cpptestscan gcc"

@@ -26,6 +26,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Doxygen Action
-        uses: Jetpad/system@1.98
+        uses: System@1.9.4
         with:
           main-path: "./main"

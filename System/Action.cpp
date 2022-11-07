@@ -69,20 +69,20 @@ void Action::handleAction(Context* c){
         while (!firstPass) { 
             switch (firstInput) {
                 case 1:
-                    cout << "Attack selected" << endl;
+                    // cout << "Attack selected" << endl;
                     firstPass = true;
                     c->setState(new AttackPhase(engine));
                     //engine->P1SelectedCountry->attack(); //myCountry used instead of america
                     // doCheck = false; //to go to action again after fighting, I commented out this line
                     break;
                 case 2:
-                    cout << "Build selected" << endl;
+                    // cout << "Build selected" << endl;
                     firstPass = true;
                     c->setState(new BuildPhase(engine));
                     // engine->P1SelectedCountry->buildArmy();
                     break;
                 case 3:
-                    cout << "Transport selected" << endl;
+                    // cout << "Transport selected" << endl;
                     firstPass = true;
                     c->setState(new TransportPhase(engine));
                     // engine->P1SelectedCountry->addRoute();

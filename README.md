@@ -19,7 +19,12 @@
 3. make run
 
 ## UML Diagrams
-[UML](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[Class Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[Activity Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[Communication Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[Object Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[Sequence Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
+[State Diagram](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
 
 ## Doxygen Report
 [Doxygen](https://drive.google.com/drive/u/0/folders/1NCU2J2Np6GrRXTTFzZMVWMx8WpxPi9mW)

@@ -1,13 +1,17 @@
 # Jetpad
 214 Project War Engine
 
-UML Class Diagram
+## UML Diagrams
+[UML](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
 
-[214Project_Task1_Refinement.pdf](https://github.com/Priyul/Jetpad/files/9757151/214Project_Task1_Refinement.pdf)
-//add a link to google drive to all UML'S here
+## Doxygen Report
+[Doxygen](https://drive.google.com/drive/u/0/folders/1NCU2J2Np6GrRXTTFzZMVWMx8WpxPi9mW)
 
-//add a link to doxygen report
+## Functional Requirements
+[FR](https://drive.google.com/drive/u/0/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0)
 
-//add a link to the video
+## Research Report
+[Research Report](https://drive.google.com/drive/u/0/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf)
 
-(create a drive with all docs)
+## Video
+[Video](https://drive.google.com/drive/u/0/folders/1zwu0cwJ5NiCZY4GkjCm1dfxItaCthhxX)

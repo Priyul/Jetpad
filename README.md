@@ -11,6 +11,13 @@
 | Edwin | @tuks.co.za |
 | Dash | @tuks.co.za |
 
+
+## How to compile the system
+
+1. Open Terminal in the SYSTEM folder
+2. make
+3. make run
+
 ## UML Diagrams
 [UML](https://drive.google.com/drive/u/0/folders/1q1xhDXgEDhC_AKQPeX5APFAGHb3ucyCv)
 
@@ -28,10 +35,3 @@
 
 ## Design Report
 [Design](https://drive.google.com/drive/u/0/folders/1aT9U4q1az_QHCNmY5P7qxhaAOFrv1CAB)
-
-
-## How to compile the system
-
-1. Open Terminal in the SYSTEM folder
-2. make
-3. make run

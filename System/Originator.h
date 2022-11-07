@@ -2,7 +2,6 @@
 #define ORIGINATOR_H
 
 #include "Country.h"
-#include "Engine.h"
 
 #include <vector>
 #include <string>

@@ -5,6 +5,8 @@
 #include <random>
 #include <ctime>
 
+using namespace std;
+
 Attacking::Attacking(){
     //  std::cout << "Attacking constructor called" << endl;
 }
@@ -28,10 +30,16 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
     Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
     vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
 
-    cout << "\033[1;32m" << currentCountry->whichPlayer << " is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
+    if (currentCountry->whichPlayer == "P1") {
+        notCurrentCountry->whichPlayer = "P2";
+    } else {
+        notCurrentCountry->whichPlayer = "P1";
+    }
 
+    cout << "\033[1;32m" << currentCountry->whichPlayer << " is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
+    cout << "before" << endl;
     cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " is using defense strategy: " << "\033[1;33m" << CPUDefenseStrategy << "\033[0m" << endl;
- 
+    cout << "after" << endl;
 
     string attackVehicleChosen;
     string defenseVehicleChosen;

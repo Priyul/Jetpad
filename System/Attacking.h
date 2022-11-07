@@ -17,6 +17,7 @@ public:
      * 
      */
     Attacking();
+    
         /**
      * @brief Implement attacking strategy
      * 

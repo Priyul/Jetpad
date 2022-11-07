@@ -55,8 +55,8 @@ Can be found in [UML State](https://drive.google.com/drive/u/0/folders/1R5EW7jJy
 ### Research Report
 [Research Report](https://drive.google.com/drive/u/0/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf)
 
-### Video Demonstration
+### Video Demonstration (todo)
 [Video]()
 
-### Design Report
+### Design Report (todo)
 [Design]()

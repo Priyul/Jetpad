@@ -9,7 +9,7 @@
 | Priyul Mahabeer | u20421169@tuks.co.za |
 | Tianyou Huang | u20660546@tuks.co.za |
 | Sen-Hong Chang | u20424575@tuks.co.za |
-| Dharshan Pillay | @tuks.co.za |
+| Dharshan Pillay | u19027487@tuks.co.za |
 
 
 ## How to compile the program

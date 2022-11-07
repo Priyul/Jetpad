@@ -4,11 +4,11 @@
 
 | Name | Email |
 | ----------- | ----------- |
-| Ashir Butt | @tuks.co.za |
+| Ashir Butt | u20422475@tuks.co.za |
 | Jaimen Govender | @tuks.co.za |
-| Priyul Mahabeer | @tuks.co.za |
-| Jackie | @tuks.co.za |
-| Edwin | @tuks.co.za |
+| Priyul Mahabeer | u20421169@tuks.co.za |
+| Tianyou Huang | u20660546@tuks.co.za |
+| Sen-Hong Chang | u20424575@tuks.co.za |
 | Dash | @tuks.co.za |
 
 

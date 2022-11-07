@@ -626,12 +626,12 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
                 switch(defRank[0]) {
                     case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        ourArmy[attSoldierCounter]->setProbability(0.25);
+                        AIArmy[defendSoldierCounter]->setProbability(0.75);
                         break;
                     case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
                         break;
                     case 'S':
                         ourArmy[attSoldierCounter]->setProbability(0.35);
@@ -686,16 +686,16 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
                 switch(defRank[0]) {
                     case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        ourArmy[attSoldierCounter]->setProbability(0.35);
+                        AIArmy[defendSoldierCounter]->setProbability(0.65);
                         break;
                     case 'P':
                         ourArmy[attSoldierCounter]->setProbability(0.65);
                         AIArmy[defendSoldierCounter]->setProbability(0.35);
                         break;
                     case 'S':
-                        ourArmy[attSoldierCounter]->setProbability(0.35);
-                        AIArmy[defendSoldierCounter]->setProbability(0.65);
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
                         break;
                     default:
                         ourArmy[attSoldierCounter]->setProbability(0);
@@ -750,8 +750,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                         AIArmy[defendSoldierCounter]->setProbability(0.5);
                         break;
                     case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.65);
-                        AIArmy[defendSoldierCounter]->setProbability(0.35);
+                        ourArmy[attSoldierCounter]->setProbability(0.75);
+                        AIArmy[defendSoldierCounter]->setProbability(0.25);
                         break;
                     case 'S':
                         ourArmy[attSoldierCounter]->setProbability(0.65);

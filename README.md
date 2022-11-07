@@ -32,18 +32,18 @@
 (no installation required)
 
 ## UML Diagrams
-### Class Diagram
-[Class Diagram](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp)<br />
+### Class Diagram 
+Can be found in [UML Class](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp)<br />
 ### Activity Diagram
-[Activity Diagram](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)<br />
+Can be found in [UML Activity](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)<br />
 ### Communication Diagram
-[Communication Diagram](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)<br />
+Can be found in [UML Communication](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)<br />
 ### Object Diagram
-[Object Diagram](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)<br />
+Can be found in [UML Object](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)<br />
 ### Sequence Diagram
-[Sequence Diagram](https://drive.google.com/drive/u/0/folders/1ueMsUafxSUlut7lbtrQpBnsU3GZ1bUXH)<br />
+Can be found in [UML Sequence](https://drive.google.com/drive/u/0/folders/1ueMsUafxSUlut7lbtrQpBnsU3GZ1bUXH)<br />
 ### State Diagram
-[State Diagram](https://drive.google.com/drive/u/0/folders/1R5EW7jJy0a21uHerldPi8WJkBA_rn4E5)<br />
+Can be found in [UML State](https://drive.google.com/drive/u/0/folders/1R5EW7jJy0a21uHerldPi8WJkBA_rn4E5)<br />
 
 ## Reports and Documentation
 ### Doxygen

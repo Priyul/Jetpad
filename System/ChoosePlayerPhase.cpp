@@ -9,8 +9,23 @@ void ChoosePlayerPhase::handleAction(Context* c){
     /* select which country to pick from list of allies */
     int input;
 
+    
     Country* currentCountry = this->engine->whichPlayerTurnCountry();
     vector<Country*> currentCountryVector = this->engine->whichPlayerTurnVector();
+
+    bool NotPlaying = false;
+    for (int i = 0; i < currentCountryVector.size(); i++) {
+        if (currentCountryVector[i]->getTurnsToSkip() > 0) {
+            NotPlaying = true;
+            cout << "turns to skip: " << currentCountryVector[i]->getTurnsToSkip() << endl;
+            currentCountryVector[i]->setTurnsToSkip(currentCountryVector[i]->getTurnsToSkip() - 1);
+        }
+    }
+
+    if (NotPlaying) {
+        engine->switchTurns();
+        c->setState(new ChoosePlayerPhase(this->engine));
+    }
     
     int count = 0;
     for (int i = 0; i < currentCountryVector.size() ; i++) {
@@ -24,6 +39,7 @@ void ChoosePlayerPhase::handleAction(Context* c){
         cout << "\033[1;31m" << this->engine->printCurrentPlayer() << " select which country to perform an action with:" << "\033[0m" << endl;
         for (int i = 0; i < currentCountryVector.size(); i++) {
             if (currentCountryVector[i]->hasLost == false) {
+
                 if(currentCountryVector[i]->isMainCountry == true){
                     cout << i << " ==> " << currentCountryVector[i]->getCountryName() << " (Main country) " << endl;
                 }else{

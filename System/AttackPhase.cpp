@@ -19,8 +19,8 @@ AttackPhase :: AttackPhase(Engine *engine) {
 void AttackPhase::handleAction(Context* c)
 {
 
-    Country* currentCountry = engine->whichPlayerTurnCountry();
-    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
+    Country* currentCountry = this->engine->whichPlayerTurnCountry();
+    vector<Country*> currentCountryVector = this->engine->whichPlayerTurnVector();
 
     Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
     vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
@@ -268,38 +268,50 @@ void AttackPhase::handleAction(Context* c)
     
     int numVehicles = notCurrentCountry->numberOfPlanes + notCurrentCountry->numberOfShips + notCurrentCountry->numberOfTanks;
 
-    if ((notCurrentCountry->getMoney() < 20000) || (notCurrentCountry->army.size() == 0)) {
+    int numberOfVehiclesThatCameBack = 0; 
 
-        bool heLost = false;
-
-        if (CPUDefenseType == "LandDefense"){
-            if(notCurrentCountry->numberOfTanks <= 0){
-                heLost = true;
-            }
-        }else if(CPUDefenseType == "AirDefense"){
-            if(notCurrentCountry->numberOfPlanes <= 0){
-                heLost = true;
-            }
-        }else if(CPUDefenseType == "SeaDefense"){
-            if(notCurrentCountry->numberOfShips <= 0){
-                heLost = true;
+    if(CPUDefenseType == "LandDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Tank"){
+                numberOfVehiclesThatCameBack++;
             }
         }
-
-        if (heLost) {
-            if (notCurrentCountry->isMainCountry == true) {
-                c->setState(new EndOfWar(this->engine));
+    }else if(CPUDefenseType == "AirDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Plane"){
+                numberOfVehiclesThatCameBack++;
             }
+        }
+    }else if(CPUDefenseType == "SeaDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Ship"){
+                numberOfVehiclesThatCameBack++;
+            }
+        }
+    }
 
-            notCurrentCountry->hasLost = true;
-            int count = 0;
-            for (int i = 0; i < notCurrentCountryVector.size(); i++) {
-                if (notCurrentCountryVector[i]->hasLost) {
-                    count++;
+
+    if (notCurrentCountry->getMoney() < 20000 || numberOfVehiclesThatCameBack == 0) {
+        notCurrentCountry->hasLost = true;
+
+
+        if (notCurrentCountry->isMainCountry == true) {
+            c->setState(new EndOfWar(this->engine));
+            return;
+        }else{
+               
+            auto it = find(notCurrentCountryVector.begin(), notCurrentCountryVector.end(), notCurrentCountry);
+            if(it != notCurrentCountryVector.end()){
+                cout << "he got removed" << endl << endl;
+
+                notCurrentCountryVector.erase(it);
+         
+                if (this->engine->isP1Turn == true) {
+                    this->engine->P2CountryVector = notCurrentCountryVector;
+                } else {
+                    this->engine->P1CountryVector = notCurrentCountryVector;
+                    
                 }
-            }
-            if (count == 6) {
-                c->setState(new EndOfWar(this->engine));
             }
         }
            

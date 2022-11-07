@@ -67,6 +67,9 @@ public:
     bool isP1Turn;
     bool isP2Turn;
 
+    // int P1TurnsToSkip;
+    // int P2TurnsToSkip;
+
 private:
     // bool isP1Turn;
     // bool isP2Turn;

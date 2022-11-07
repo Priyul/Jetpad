@@ -26,5 +26,6 @@ void ShortRoute::setTurnsToSkip(int turns){
 
 int ShortRoute::getTurnsToSkip(){
     this->setTurnsToSkip(1);
+    this->turnsToSkip = 1;
     return TransportDecorator::getTurnsToSkip();
 }

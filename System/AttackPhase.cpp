@@ -19,8 +19,8 @@ AttackPhase :: AttackPhase(Engine *engine) {
 void AttackPhase::handleAction(Context* c)
 {
 
-    Country* currentCountry = engine->whichPlayerTurnCountry();
-    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
+    Country* currentCountry = this->engine->whichPlayerTurnCountry();
+    vector<Country*> currentCountryVector = this->engine->whichPlayerTurnVector();
 
     Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
     vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
@@ -80,17 +80,20 @@ void AttackPhase::handleAction(Context* c)
     srand(time(0));  // Initialize random number generator.
 
     while(CPUDefenseChoice != 1 && CPUDefenseChoice != 2 && CPUDefenseChoice != 3){
-        cout << "\033[1;31m" << "P2 Choose a defense strategy" << "\033[0m" << endl;
+        cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " Choose a defense strategy" << "\033[0m" << endl;
         cout << "1. Land Defense (You must own 1 or more Tanks)" << endl;
         cout << "2. Air Defense (You must own 1 or more Planes)" << endl;
         cout << "3. Sea Defense (You must own 1 or more Ships)" << endl;
         cout << "select option: > ";
         cin >> CPUDefenseChoice;
+        
 
         if(CPUDefenseChoice != 1 && CPUDefenseChoice != 2 && CPUDefenseChoice != 3){
             cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
         }
     }
+
+  
 
     if(CPUDefenseChoice == 1){
         CPUDefenseType = "LandDefense";
@@ -103,7 +106,7 @@ void AttackPhase::handleAction(Context* c)
     }
 
     while(AttackStrategyInput != 1 && AttackStrategyInput != 2 && AttackStrategyInput != 3){
-        cout << "\033[1;31m" << "P1 Choose Attack strategy" << "\033[0m" << endl;
+        cout << "\033[1;31m" << currentCountry->whichPlayer << " Choose Attack strategy" << "\033[0m" << endl;
         cout << "1. Land Attack (You must own 1 or more Tanks)" << endl;
         cout << "2. Air Attack (You must own 1 or more Planes)" << endl;
         cout << "3. Sea Attack (You must own 1 or more Ships)" << endl;
@@ -238,7 +241,7 @@ void AttackPhase::handleAction(Context* c)
 
     WarStrategy* attackStrategy = new Attacking();
 
-    attackStrategy->handle(currentCountry->army, notCurrentCountry->army, PlayerAttackType, CPUDefenseType, ChooseNumberOfVehiclesToSend, ChooseNumberOfMajorsToSend, ChooseNumberOfSergeantsToSend, ChooseNumberOfPrivatesToSend);
+    attackStrategy->handle(currentCountry->army, notCurrentCountry->army, PlayerAttackType, CPUDefenseType, ChooseNumberOfVehiclesToSend, ChooseNumberOfMajorsToSend, ChooseNumberOfSergeantsToSend, ChooseNumberOfPrivatesToSend, engine);
     
     cout << endl;
     cout << "before attack" << endl << endl;
@@ -260,6 +263,59 @@ void AttackPhase::handleAction(Context* c)
     cout << "\033[1;32m" << "Player 2 army after the attack (" << notCurrentCountry->getCountryName() << ")" << "\033[0m";
     notCurrentCountry->showArmy();
     cout << endl;
+
+    //CHECK if country still has money and an army
+    
+    int numVehicles = notCurrentCountry->numberOfPlanes + notCurrentCountry->numberOfShips + notCurrentCountry->numberOfTanks;
+
+    int numberOfVehiclesThatCameBack = 0; 
+
+    if(CPUDefenseType == "LandDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Tank"){
+                numberOfVehiclesThatCameBack++;
+            }
+        }
+    }else if(CPUDefenseType == "AirDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Plane"){
+                numberOfVehiclesThatCameBack++;
+            }
+        }
+    }else if(CPUDefenseType == "SeaDefense"){
+        for(int i=0; i<notCurrentCountry->army.size(); i++){
+            if(notCurrentCountry->army[i]->getRank() == "Ship"){
+                numberOfVehiclesThatCameBack++;
+            }
+        }
+    }
+
+
+    if (notCurrentCountry->getMoney() < 20000 || numberOfVehiclesThatCameBack == 0) {
+        notCurrentCountry->hasLost = true;
+
+
+        if (notCurrentCountry->isMainCountry == true) {
+            c->setState(new EndOfWar(this->engine));
+            return;
+        }else{
+               
+            auto it = find(notCurrentCountryVector.begin(), notCurrentCountryVector.end(), notCurrentCountry);
+            if(it != notCurrentCountryVector.end()){
+                cout << "he got removed" << endl << endl;
+
+                notCurrentCountryVector.erase(it);
+         
+                if (this->engine->isP1Turn == true) {
+                    this->engine->P2CountryVector = notCurrentCountryVector;
+                } else {
+                    this->engine->P1CountryVector = notCurrentCountryVector;
+                    
+                }
+            }
+        }
+           
+    }
 
     this->engine->switchTurns();
 

@@ -132,6 +132,10 @@ public:
 
     string whichPlayer;
 
+    bool hasLost;
+
+    int getTurnsToSkip();
+    void setTurnsToSkip(int i);
 
 protected:
 
@@ -145,6 +149,8 @@ private:
     ArmyFactory* vehicleFactory;
 
     double costOfCountry;
+
+    int turnsToSkip;
 };
 
 #endif

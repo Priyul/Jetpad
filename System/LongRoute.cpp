@@ -26,5 +26,6 @@ void LongRoute::setTurnsToSkip(int turns){
 
 int LongRoute::getTurnsToSkip(){
     this->setTurnsToSkip(3);
+    this->turnsToSkip = 3;
     return TransportDecorator::getTurnsToSkip();
 }

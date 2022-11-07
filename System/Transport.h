@@ -49,10 +49,11 @@ public:
      * @return ** int 
      */
     virtual int getTurnsToSkip() = 0;
+
+    int turnsToSkip;
 protected:
     double moneyGained;
     std::string routeDescription;
-    int turnsToSkip;
 };
 
 

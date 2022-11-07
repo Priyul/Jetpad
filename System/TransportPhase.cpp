@@ -17,6 +17,11 @@ TransportPhase :: TransportPhase(Engine* engine) {
 
 void TransportPhase::handleAction(Context* c)
 {
+    Country* currentCountry = engine->whichPlayerTurnCountry();
+    vector<Country*> currentCountryVector = engine->whichPlayerTurnVector();
+
+    Country* notCurrentCountry = engine->whichNotPlayerTurnCountry();
+    vector<Country*> notCurrentCountryVector = engine->whichNotPlayerTurnVector();
 
     int input;
     bool firstPass = false;
@@ -38,35 +43,43 @@ void TransportPhase::handleAction(Context* c)
 
     std::cout << endl << "Active transport operations:" << std::endl;
     if(input == 1){
-        Transport* shortRoute = new ShortRoute(this->engine->P1SelectedCountry->baseTransportRoute);
+        Transport* shortRoute = new ShortRoute(currentCountry->baseTransportRoute);
         cout << shortRoute->getDescription() << endl;
         int moneyGained = shortRoute->getMoneyGained();
         cout << "Amount: " << moneyGained << endl;
 
-        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+        this->engine->bank->sendMoney(currentCountry, moneyGained);
+
+        currentCountry->setTurnsToSkip(1);
+
 
         cout << "Number of turns to skip: " << shortRoute->getTurnsToSkip() << endl; //so to use the skip turn feature, we iterate through the array of 6 countries and call this method for each country. If the method returns a value greater than 0, the next player will play their turn
     }else if(input == 2){
-        Transport* mediumRoute = new MediumRoute(this->engine->P1SelectedCountry->baseTransportRoute);
+        Transport* mediumRoute = new MediumRoute(currentCountry->baseTransportRoute);
         cout << mediumRoute->getDescription() << endl;
         int moneyGained = mediumRoute->getMoneyGained();
         cout << "Amount: " << moneyGained << endl;
 
-        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+        currentCountry->setTurnsToSkip(2);
+
+        this->engine->bank->sendMoney(currentCountry, moneyGained);
+
 
         cout << "Number of turns to skip: " << mediumRoute->getTurnsToSkip() << endl;
     }else if(input == 3){
-        Transport* longRoute = new LongRoute(this->engine->P1SelectedCountry->baseTransportRoute);
+        Transport* longRoute = new LongRoute(currentCountry->baseTransportRoute);
         cout << longRoute->getDescription() << endl;
         int moneyGained = longRoute->getMoneyGained();
         cout << "Amount: " << moneyGained << endl;
 
-        this->engine->bank->sendMoney(this->engine->P1SelectedCountry, moneyGained);
+        currentCountry->setTurnsToSkip(3);
+
+        this->engine->bank->sendMoney(currentCountry, moneyGained);
 
         cout << "Number of turns to skip: " << longRoute->getTurnsToSkip() << endl;
     }
 
-    // this->engine->P1SelectedCountry->addRoute();
+    // currentCountry->addRoute();
 
     //Jackie code:
     // string ans;

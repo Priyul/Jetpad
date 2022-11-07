@@ -26,6 +26,10 @@ Country :: Country() {
     this->isMainCountry = false;
 
     this->baseTransportRoute = new Route();
+
+    this->whichPlayer = "P1"; //default value
+
+    this->turnsToSkip = 0;
 }
 
 Country :: ~Country() {
@@ -176,4 +180,12 @@ void Country :: setCostOfCountry(double cost) {
 
 double Country :: getCostOfCountry() {
     return this->costOfCountry;
+}
+
+void Country :: setTurnsToSkip(int i) {
+    this->turnsToSkip = i;
+}
+
+int Country :: getTurnsToSkip() {
+    return this->turnsToSkip;
 }

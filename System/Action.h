@@ -15,7 +15,6 @@ class Action: public State{
          * 
          * @param engine
         */
-
         Action(Engine* engine);
 
         /**
@@ -25,14 +24,12 @@ class Action: public State{
         */
         virtual void handleAction(Context* c);
 
-
         /**
-         * @brief get the state
+         * @brief Get the State object
          * 
-        */
+         * @return string 
+         */
         virtual string getState();
-       
-
         Engine* engine;
         //Engine* getEngine();
     

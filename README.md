@@ -19,18 +19,18 @@
 3. make run
 
 ## UML Diagrams
-[Class Diagram](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp);
-[Activity Diagram](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)
-[Communication Diagram](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)
-[Object Diagram](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)
-[Sequence Diagram](https://drive.google.com/drive/u/0/folders/1ueMsUafxSUlut7lbtrQpBnsU3GZ1bUXH)
-[State Diagram](https://drive.google.com/drive/u/0/folders/1R5EW7jJy0a21uHerldPi8WJkBA_rn4E5)
+[Class Diagram](https://drive.google.com/drive/u/0/folders/1iLaN0yRBw1PWcm_lwk2ROV7TUf-jtMRp)<br />
+[Activity Diagram](https://drive.google.com/drive/u/0/folders/1fo7Do6LNsNUDNIuL2ljOeRc_ZzYhXlip)<br />
+[Communication Diagram](https://drive.google.com/drive/u/0/folders/1pDfnsJz-hNj3_8AqUz7T7kVC3BVQn97P)<br />
+[Object Diagram](https://drive.google.com/drive/u/0/folders/1bX7z66ht3r2gMlK_KVTg--VL2KNogJml)<br />
+[Sequence Diagram](https://drive.google.com/drive/u/0/folders/1ueMsUafxSUlut7lbtrQpBnsU3GZ1bUXH)<br />
+[State Diagram](https://drive.google.com/drive/u/0/folders/1R5EW7jJy0a21uHerldPi8WJkBA_rn4E5)<br />
 
 ## Doxygen Report
 [Doxygen](https://drive.google.com/drive/u/0/folders/1NCU2J2Np6GrRXTTFzZMVWMx8WpxPi9mW)
 
 ## Functional Requirements
-[FR](https://drive.google.com/drive/u/0/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0)
+[Function Report](https://drive.google.com/drive/u/0/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0)
 
 ## Research Report
 [Research Report](https://drive.google.com/drive/u/0/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf)

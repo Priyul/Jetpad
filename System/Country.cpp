@@ -189,3 +189,7 @@ void Country :: setTurnsToSkip(int i) {
 int Country :: getTurnsToSkip() {
     return this->turnsToSkip;
 }
+
+void Country :: resetArmy(vector<Army*> a) {
+    this->army = a;
+}

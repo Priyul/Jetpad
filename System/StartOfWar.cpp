@@ -216,7 +216,7 @@ void StartOfWar::handleAction(Context* c){
 }
 
 string StartOfWar::getState(){
-    return "(Start of the War)";
+    return "";
 }
 
 

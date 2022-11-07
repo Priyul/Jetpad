@@ -33,51 +33,10 @@ int main() {
     StartOfWar* currentState = new StartOfWar();
     currentState->handleAction(currContext);
 
-    Country* myCountry = currentState->getmyCountry();
-    Country* allyCountry = currentState->getAllyCountry();
-    //Country* america = currentState->buildCountry("America", 10000);
-    //Action state below
-    // bool doCheck = true;
+    // Country* myCountry = currentState->getmyCountry();
+    // Country* allyCountry = currentState->getAllyCountry();
+    
 
-    // while(doCheck) {
-    //     int firstInput = playerTurnOutput();
-    //     bool firstPass = false;
-
-    //     vector<Army*> returningArmy;
-
-    //     while (!firstPass) { //priyul
-    //         switch (firstInput) {
-    //             case 1:
-    //                 cout << "Attack selected" << endl;
-    //                 returningArmy = myCountry->attack(); //myCountry used instead of america
-    //                 // if(!returningArmy.empty()){ //failed to attack due to insuffecient number of tr
-    //                 //     firstPass = true;
-    //                 // }
-    //                 firstPass = true;
-    //                 // doCheck = true; //idk if this is supposed to be here anymore, check again
-    //                 break;
-    //             case 2:
-    //                 cout << "Build selected" << endl;
-    //                 firstPass = true;
-    //                 // myCountry->buildArmy();
-    //                 break;
-    //             case 3:
-    //                 cout << "Transport selected" << endl;
-    //                 firstPass = true;
-    //                 doCheck = true;
-    //                 break;
-    //             case 4:
-    //                 firstPass = true;
-    //                 doCheck = false;
-    //                 break;
-    //             default:
-    //                 cout << "\033[7;31m" << "Invalid input, try again!" << "\033[0m" << endl;
-    //                 firstInput = playerTurnOutput();
-    //         }
-    //     }
-    // }
-
-    // myCountry->showArmy();
-
+    
     return 0;
 }

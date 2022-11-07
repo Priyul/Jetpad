@@ -6,6 +6,8 @@
 #include "ChoosePlayerPhase.h"
 #include "EndOfWar.h"
 
+#include "CountryStorage.h"
+
 #include<iostream>
 #include<string>
 using namespace std;

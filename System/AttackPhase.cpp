@@ -7,6 +7,8 @@
 #include <string>
 #include <iomanip>
 
+#include "CountryStorage.h"
+
 //for testing
 #include "WarStrategy.h"
 #include "Attacking.h"
@@ -18,6 +20,11 @@ AttackPhase :: AttackPhase(Engine *engine) {
 
 void AttackPhase::handleAction(Context* c)
 {
+    /* CREATE MEMENTO */
+    CountryStorage* storage = new CountryStorage(engine->backup());
+    vector<Army*> P1army = engine->P1SelectedCountry->getArmy();
+    vector<Army*> P2army = engine->P1SelectedCountry->getArmy();
+    /* keeps a storage of old engine */
 
     Country* currentCountry = this->engine->whichPlayerTurnCountry();
     vector<Country*> currentCountryVector = this->engine->whichPlayerTurnVector();
@@ -78,6 +85,7 @@ void AttackPhase::handleAction(Context* c)
 
     //MAKE AI CHOOSE A DEFENSE:
     srand(time(0));  // Initialize random number generator.
+    CPUDefenseChoice = 0;
 
     while(CPUDefenseChoice != 1 && CPUDefenseChoice != 2 && CPUDefenseChoice != 3){
         cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " Choose a defense strategy" << "\033[0m" << endl;
@@ -213,49 +221,32 @@ void AttackPhase::handleAction(Context* c)
         }
     }
 
-    // vector<Army*> aiArmy;    //testing begin
-
-    // for(int i=0; i<20; i++){
-    //     aiArmy.push_back(new Soldier("Private", 0.5));
-    // }
-
-    // for(int i=0; i<10; i++){
-    //     aiArmy.push_back(new Soldier("Major", 0.5));
-    // }
-
-    // for(int i=0; i<40; i++){
-    //     aiArmy.push_back(new Soldier("Sergeant", 0.5));
-    // }
-
-    // for(int i=0; i<3; i++){
-    //     aiArmy.push_back(new Vehicle("Ship", 0));
-    // }
-
-    // for(int i=0; i<5; i++){
-    //     aiArmy.push_back(new Vehicle("Tank", 0));
-    // }
-
-    // for(int i=0; i <notCurrentCountry->army.size(); i++){
-    //     cout << "player 2 army at: " << i << " " << notCurrentCountry->army[i]->getRank() << endl;
-    // }
-
     WarStrategy* attackStrategy = new Attacking();
 
     attackStrategy->handle(currentCountry->army, notCurrentCountry->army, PlayerAttackType, CPUDefenseType, ChooseNumberOfVehiclesToSend, ChooseNumberOfMajorsToSend, ChooseNumberOfSergeantsToSend, ChooseNumberOfPrivatesToSend, engine);
     
+    string input = "";
+    cout << this->engine->printCurrentPlayer() << " : Do you want to undo your attack (y/n)?" << endl;
+    cin >> input;
+    if (input == "y") {
+        engine->restore(storage->getBackup());
+        // engine->P1SelectedCountry->resetArmy(P1army);
+        // engine->P2SelectedCountry->resetArmy(P2army);
+
+        // cout << "y recieved" << endl;
+        c->setState(new Action(this->engine));
+    } 
+
     cout << endl;
-    cout << "before attack" << endl << endl;
+
     cout << "\033[1;32m" << "Player 1 army before the attack (" << currentCountry->getCountryName() << ")" << "\033[0m";
     p1ArmyBeforeAttack->showArmy();
     cout << endl;
 
     cout << "\033[1;32m" << "Player 2 army before the attack (" << notCurrentCountry->getCountryName() << ")" << "\033[0m";
     p2ArmyBeforeAttack->showArmy();
-    cout << endl;
+    cout << endl << endl;
 
-
-
-    cout << "after attack" << endl << endl;
     cout << "\033[1;32m" << "Player 1 army after the attack (" << currentCountry->getCountryName() << ")" << "\033[0m";
     currentCountry->showArmy();
     cout << endl;
@@ -302,8 +293,6 @@ void AttackPhase::handleAction(Context* c)
                
             auto it = find(notCurrentCountryVector.begin(), notCurrentCountryVector.end(), notCurrentCountry);
             if(it != notCurrentCountryVector.end()){
-                cout << "he got removed" << endl << endl;
-
                 notCurrentCountryVector.erase(it);
          
                 if (this->engine->isP1Turn == true) {

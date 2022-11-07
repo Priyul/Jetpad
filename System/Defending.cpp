@@ -1,4 +1,4 @@
-#include "Attacking.h"
+#include "Defending.h"
 
 #include <string>
 #include <cstdlib>
@@ -8,11 +8,9 @@
 
 using namespace std;
 
-Attacking::Attacking(){
-    //  std::cout << "Attacking constructor called" << endl;
-}
+Defending::Defending(){}
 
-double randomNumber(double prob)  
+double randomNumberGen(double prob)  
 {
     double number = rand() % 100 + 1;  //Generate random number 1 to 100
 
@@ -22,7 +20,7 @@ double randomNumber(double prob)
         return 0;     
 }
 
-string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend, Engine* engine){
+string Defending::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::string playerAttackStrategy, std::string CPUDefenseStrategy, int noOfAttackingVehiclesToSend, int noOfAttackingMajorsToSend, int noOfAttackingSergeantsToSend, int noOfAttackingPrivatesToSend, Engine* engine){
     srand(time(NULL));
 
     Country* currentCountry = engine->whichPlayerTurnCountry();
@@ -39,7 +37,6 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
     cout << "\033[1;32m" << currentCountry->whichPlayer << " is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
     cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " is using defense strategy: " << "\033[1;33m" << CPUDefenseStrategy << "\033[0m" << endl;
-
 
     string attackVehicleChosen;
     string defenseVehicleChosen;
@@ -305,7 +302,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -338,7 +335,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -370,7 +367,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -404,7 +401,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -437,7 +434,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -469,7 +466,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -503,7 +500,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingTanks--;
@@ -536,7 +533,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingPlanes--;
@@ -568,7 +565,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                     defendVehicleCounter++;
                 }
 
-                result = randomNumber(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+                result = randomNumberGen(ourArmy[attVehicleCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
                 if(result == 1){
                     numberOfDefendingShips--;
@@ -625,12 +622,12 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
                 switch(defRank[0]) {
                     case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.25);
-                        AIArmy[defendSoldierCounter]->setProbability(0.75);
-                        break;
-                    case 'P':
                         ourArmy[attSoldierCounter]->setProbability(0.5);
                         AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        break;
+                    case 'P':
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
                         break;
                     case 'S':
                         ourArmy[attSoldierCounter]->setProbability(0.35);
@@ -644,7 +641,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
             }
 
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+            result = randomNumberGen(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
             if(result == 1){
                 numberOfDefendingSoldiers--;
@@ -685,16 +682,16 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
                 switch(defRank[0]) {
                     case 'M':
-                        ourArmy[attSoldierCounter]->setProbability(0.35);
-                        AIArmy[defendSoldierCounter]->setProbability(0.65);
+                        ourArmy[attSoldierCounter]->setProbability(0.5);
+                        AIArmy[defendSoldierCounter]->setProbability(0.5);
                         break;
                     case 'P':
                         ourArmy[attSoldierCounter]->setProbability(0.65);
                         AIArmy[defendSoldierCounter]->setProbability(0.35);
                         break;
                     case 'S':
-                        ourArmy[attSoldierCounter]->setProbability(0.5);
-                        AIArmy[defendSoldierCounter]->setProbability(0.5);
+                        ourArmy[attSoldierCounter]->setProbability(0.35);
+                        AIArmy[defendSoldierCounter]->setProbability(0.65);
                         break;
                     default:
                         ourArmy[attSoldierCounter]->setProbability(0);
@@ -704,7 +701,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
             }
 
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+            result = randomNumberGen(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
             if(result == 1){
                 numberOfDefendingSoldiers--;
@@ -749,8 +746,8 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
                         AIArmy[defendSoldierCounter]->setProbability(0.5);
                         break;
                     case 'P':
-                        ourArmy[attSoldierCounter]->setProbability(0.75);
-                        AIArmy[defendSoldierCounter]->setProbability(0.25);
+                        ourArmy[attSoldierCounter]->setProbability(0.65);
+                        AIArmy[defendSoldierCounter]->setProbability(0.35);
                         break;
                     case 'S':
                         ourArmy[attSoldierCounter]->setProbability(0.65);
@@ -764,7 +761,7 @@ string Attacking::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
 
             }
 
-            result = randomNumber(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
+            result = randomNumberGen(ourArmy[attSoldierCounter]->getProbability()); //resturns either 0 or 1, 1 for win and 0 for loss
 
             if(result == 1){
                 numberOfDefendingSoldiers--;

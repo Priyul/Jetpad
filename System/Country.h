@@ -117,6 +117,8 @@ public:
      */
     void setVehicleFactory(ArmyFactory* vehicleFactory);
 
+    void resetArmy(vector<Army*> a);
+
     int numberOfMajors;
     int numberOfSergeants;
     int numberOfPrivates;

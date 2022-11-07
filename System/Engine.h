@@ -9,6 +9,10 @@
 
 #include "Bank.h"
 
+#include "Originator.h"
+#include "Memento.h"
+
+
 class Engine {
 
 public:
@@ -66,6 +70,9 @@ public:
 
     bool isP1Turn;
     bool isP2Turn;
+
+    Memento* backup();
+	void restore(Memento* m);
 
     // int P1TurnsToSkip;
     // int P2TurnsToSkip;

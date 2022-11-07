@@ -9,6 +9,10 @@ using namespace std;
 class EndOfWar : public State {
     public:
 
+        /**
+         * @brief implements the end of war
+         * @param c
+         */
         EndOfWar(Engine* engine);
 
         virtual void handleAction(Context* c);

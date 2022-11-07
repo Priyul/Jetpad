@@ -67,3 +67,18 @@ string Engine :: printNotCurrentPlayer() {
 }
 
 
+
+Memento* Engine :: backup() {
+    Originator* originator = new Originator(this->P1SelectedCountry, this->P2SelectedCountry, this->P1CountryVector, this->P2CountryVector);
+    return new Memento(originator);
+}
+
+void Engine :: restore(Memento* m) {
+    Originator* originator = m->getOriginator();
+
+    this->P1SelectedCountry = originator->getP1Country();
+    this->P2SelectedCountry = originator->getP2Country();
+
+    this->P1CountryVector = originator->getP1CountryVector();
+    this->P2CountryVector = originator->getP2CountryVector();
+}

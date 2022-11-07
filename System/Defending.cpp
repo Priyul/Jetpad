@@ -36,9 +36,7 @@ string Defending::handle(vector<Army*> &ourArmy, vector<Army*> &AIArmy, std::str
     }
 
     cout << "\033[1;32m" << currentCountry->whichPlayer << " is using attack strategy: " << "\033[1;33m" << playerAttackStrategy << "\033[0m" << endl;
-    cout << "before" << endl;
     cout << "\033[1;31m" << notCurrentCountry->whichPlayer << " is using defense strategy: " << "\033[1;33m" << CPUDefenseStrategy << "\033[0m" << endl;
-    cout << "after" << endl;
 
     string attackVehicleChosen;
     string defenseVehicleChosen;

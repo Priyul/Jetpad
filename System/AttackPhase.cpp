@@ -245,7 +245,7 @@ void AttackPhase::handleAction(Context* c)
 
     cout << "\033[1;32m" << "Player 2 army before the attack (" << notCurrentCountry->getCountryName() << ")" << "\033[0m";
     p2ArmyBeforeAttack->showArmy();
-    cout << endl;
+    cout << endl << endl;
 
     cout << "\033[1;32m" << "Player 1 army after the attack (" << currentCountry->getCountryName() << ")" << "\033[0m";
     currentCountry->showArmy();

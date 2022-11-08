@@ -55,8 +55,8 @@ Can be found in [Function Report](https://drive.google.com/drive/folders/1Ayvsvg
 ### Research Report
 Can be found in [Research Report](https://drive.google.com/drive/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf?usp=share_link)
 
-### Video Demonstration (todo)
+### Video Demonstration 
 Can be found in [Video](https://drive.google.com/drive/folders/1zwu0cwJ5NiCZY4GkjCm1dfxItaCthhxX?usp=share_link)
 
-### Design Report (todo)
+### Design Report 
 Can be found in [Design](https://drive.google.com/drive/folders/1aT9U4q1az_QHCNmY5P7qxhaAOFrv1CAB?usp=share_link)

@@ -15,21 +15,32 @@
 ## How to compile the program
 ### Windows
 1) install a c++ complier ie: Windows Subsystem for Linux (WSL)
-2) open the terminal in cd/system
-3) type $ make
-4) type $ make run
+2) navigate into the cd/system/ directory
+3) run the commands below:
+- $ make
+- $ make run
 
 ### MacOS
-1) open the terminal in cd/system
-2) type $ make
-3) type $ make run
+1) navigate into the cd/system/ directory
+- $ make
+- $ make run
 (no installation required)
 
 ### Linux
-1) open the terminal in cd/system
-2) type $ make
-3) type $ make run
+1) navigate into the cd/system/ directory
+2) run the commands below:
+- $ make
+- $ make run
 (no installation required)
+
+## Running Unit Tests
+1) navigate into the UnitTesting/gtest-demo/ directory
+2) run the commands below:
+- $ cmake -S. -Bbuild
+- $ cmake --build build
+- $ cd build
+- $ ctest
+
 
 ## UML Diagrams
 ### Class Diagram 

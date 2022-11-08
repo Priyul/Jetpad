@@ -17,7 +17,7 @@ void ChoosePlayerPhase::handleAction(Context* c){
     for (int i = 0; i < currentCountryVector.size(); i++) {
         if (currentCountryVector[i]->getTurnsToSkip() > 0) {
             NotPlaying = true;
-            cout << "turns to skip: " << currentCountryVector[i]->getTurnsToSkip() << endl;
+            // cout << "turns to skip: " << currentCountryVector[i]->getTurnsToSkip() << endl;
             currentCountryVector[i]->setTurnsToSkip(currentCountryVector[i]->getTurnsToSkip() - 1);
         }
     }

@@ -56,7 +56,7 @@ Can be found in [UML State](https://drive.google.com/drive/u/0/folders/1R5EW7jJy
 [Research Report](https://drive.google.com/drive/u/0/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf)
 
 ### Video Demonstration (todo)
-[Video]()
+[Video](https://drive.google.com/drive/folders/1y4Ip70h3IbwMgbGS8zvgF5B4jzVZp8KA)
 
 ### Design Report (todo)
-[Design]()
+[Design](https://drive.google.com/drive/folders/1y4Ip70h3IbwMgbGS8zvgF5B4jzVZp8KA)

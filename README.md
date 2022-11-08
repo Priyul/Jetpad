@@ -47,16 +47,16 @@ Can be found in [UML State](https://drive.google.com/drive/folders/1R5EW7jJy0a21
 
 ## Reports and Documentation
 ### Doxygen
-[Doxygen](https://drive.google.com/drive/folders/1NCU2J2Np6GrRXTTFzZMVWMx8WpxPi9mW?usp=share_link)
+Can be found in [Doxygen](https://drive.google.com/drive/folders/1NCU2J2Np6GrRXTTFzZMVWMx8WpxPi9mW?usp=share_link)
 
 ### Functional Requirements
-[Function Report](https://drive.google.com/drive/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0?usp=share_link)
+Can be found in [Function Report](https://drive.google.com/drive/folders/1Ayvsvgwcm-OSu_iBR5yNxoG4JlpqNMF0?usp=share_link)
 
 ### Research Report
-[Research Report](https://drive.google.com/drive/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf?usp=share_link)
+Can be found in [Research Report](https://drive.google.com/drive/folders/1G2B9yqTDjsBC7ZsMxVPaKy_-MF9n2yAf?usp=share_link)
 
 ### Video Demonstration (todo)
-[Video](https://drive.google.com/drive/folders/1zwu0cwJ5NiCZY4GkjCm1dfxItaCthhxX?usp=share_link)
+Can be found in [Video](https://drive.google.com/drive/folders/1zwu0cwJ5NiCZY4GkjCm1dfxItaCthhxX?usp=share_link)
 
 ### Design Report (todo)
-[Design](https://drive.google.com/drive/folders/1aT9U4q1az_QHCNmY5P7qxhaAOFrv1CAB?usp=share_link)
+Can be found in [Design](https://drive.google.com/drive/folders/1aT9U4q1az_QHCNmY5P7qxhaAOFrv1CAB?usp=share_link)

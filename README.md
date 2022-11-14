@@ -1,4 +1,4 @@
-# Jetpad - 214 Project War Engine
+# COS 214 Project War Engine - Group: Jetpad
 
 ## Group Members
 
